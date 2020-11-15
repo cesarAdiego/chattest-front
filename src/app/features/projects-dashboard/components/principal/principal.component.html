@@ -1,7 +1,11 @@
-<button pButton type="button" label="Click" ></button>
-
+<p-button type="button" label="Nuevo proyecto" (click)="openNewProjectPopup($event)"></p-button>
 <p-card *ngFor="let project of projects">
     <p-header>
         {{project.name}}
     </p-header>
+    <button pButton label="Eliminar proyecto" class="p-button-danger" (click)="deleteProject(project)"></button>
 </p-card>
+
+<!--NgPrime features-->
+<p-toast></p-toast>
+<p-confirmDialog header="Eliminar Proyecto" icon="pi pi-exclamation-triangle"></p-confirmDialog>

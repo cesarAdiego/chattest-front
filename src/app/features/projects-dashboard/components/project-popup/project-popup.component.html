@@ -1,0 +1,12 @@
+<p></p>
+<br/>
+<div class="p-formgroup-inline">
+    <div class="p-field">
+    <span class="p-float-label">
+            <input type="text" id="projectNameId" pInputText required [(ngModel)]="project.name"/>
+            <label for="projectNameId">Nombre del proyecto</label>
+    </span>
+    </div>
+</div>
+<button pButton type="button" label="Crear nuevo proyecto" (click)="createNewProject($event)"></button>
+<button pButton type="button" label="Cerrar" class="p-button-danger" (click)="closePopup($event)"></button>

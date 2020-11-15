@@ -13,4 +13,12 @@ export class ProjectsService {
   public getAllProjects() {
     return this.http.get<Project[]>(`${environment.apiUrl}/projects`);
   }
+
+  public createProject(project: Project) {
+    return this.http.post<string[]>(`${environment.apiUrl}/projects`, project);
+  }
+
+  public deleteProject(projectId: number) {
+    return this.http.delete<string[]>(`${environment.apiUrl}/projects/${projectId}`);
+  }
 }
