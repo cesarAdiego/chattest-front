@@ -1,9 +1,12 @@
 <p-button type="button" label="Nuevo proyecto" (click)="openNewProjectPopup($event)"></p-button>
+<h1>Mis Proyectos</h1>
 <p-card *ngFor="let project of projects">
     <p-header>
         {{project.name}}
     </p-header>
     <button pButton label="Eliminar proyecto" class="p-button-danger" (click)="deleteProject(project)"></button>
+    <button pButton label="Entrar" class="p-button-success" (click)="goToTestsDashboard(project.id)"></button>
+
 </p-card>
 
 <!--NgPrime features-->

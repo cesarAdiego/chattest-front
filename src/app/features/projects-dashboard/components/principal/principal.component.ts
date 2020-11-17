@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Project } from 'src/app/entities/project';
@@ -17,7 +18,8 @@ export class ProjectsDashboardComponent implements OnInit {
   constructor(private projectsService: ProjectsService,
               private confirmationService: ConfirmationService,
               private dialogService: DialogService,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.refreshProjects();
@@ -34,6 +36,10 @@ export class ProjectsDashboardComponent implements OnInit {
         this.refreshProjects();
       }
     });
+  }
+
+  goToTestsDashboard(projectId: number) {
+    this.router.navigate([`/projects/${projectId}/tests`]);
   }
 
   deleteProject(project: Project) {

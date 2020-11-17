@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { Project } from 'src/app/entities/project';
 
@@ -15,8 +15,7 @@ export class ProjectPopupComponent implements OnInit {
   project: Project;
   constructor(private projectService: ProjectsService,
               private messageService: MessageService,
-              public ref: DynamicDialogRef,
-              public config: DynamicDialogConfig) { }
+              public ref: DynamicDialogRef) { }
 
   ngOnInit(): void {
       this.project = new Project();
@@ -26,8 +25,7 @@ export class ProjectPopupComponent implements OnInit {
     this.ref.close();
   }
 
-  createNewProject(event) {
-    console.log(this.project.name);
+  createNewProject() {
     if(!this.project.name || this.project.name == '') {
       this.messageService.add({severity: 'error', summary:'Error', 'detail': 'El nombre del proyecto no puede estar vacío'});
     }

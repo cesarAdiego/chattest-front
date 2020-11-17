@@ -1,0 +1,12 @@
+<p></p>
+<br/>
+<div class="p-formgroup-inline">
+    <div class="p-field">
+    <span class="p-float-label">
+            <input type="text" id="testNameId" pInputText required [(ngModel)]="test.name"/>
+            <label for="testNameId">Nombre del test</label>
+    </span>
+    </div>
+</div>
+<button pButton type="button" label="Crear nuevo test" (click)="createNewTest()"></button>
+<button pButton type="button" label="Cerrar" class="p-button-danger" (click)="closePopup()"></button>

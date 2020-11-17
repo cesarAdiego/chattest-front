@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProjectsDashboardModule } from './features/projects-dashboard/projects-dashboard.module';
+import { TestsDashboardModule } from './features/tests-dashboard/tests-dashboard.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProjectsDashboardModule } from './features/projects-dashboard/projects-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ProjectsDashboardModule
+    ProjectsDashboardModule,
+    TestsDashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
