@@ -4,7 +4,7 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Project } from 'src/app/entities/project';
 
 import { MessageService } from 'primeng/api';
-import { ProjectsService } from 'src/app/services/projects.service';
+import { ProjectsService } from 'src/app/common/services/projects.service';
 
 @Component({
   selector: 'app-project-popup',
@@ -26,8 +26,12 @@ export class ProjectPopupComponent implements OnInit {
   }
 
   createNewProject() {
+    console.log(this.project);
     if(!this.project.name || this.project.name == '') {
       this.messageService.add({severity: 'error', summary:'Error', 'detail': 'El nombre del proyecto no puede estar vacío'});
+    }
+    else if(this.project.botTypeId == 0) {
+      this.messageService.add({severity: 'error', summary:'Error', 'detail': 'Debes seleccionar el tipo de bot que deseas probar'});
     }
     else {
       this.projectService.createProject(this.project).subscribe(errorMessages => {
@@ -42,5 +46,9 @@ export class ProjectPopupComponent implements OnInit {
       }
       });
     }
+  }
+
+  setSelectedBotType(event) {
+    this.project.botTypeId = event.id;
   }
 }

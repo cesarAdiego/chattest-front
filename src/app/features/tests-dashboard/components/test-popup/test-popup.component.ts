@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { TestsService } from 'src/app/common/services/tests.service';
 import { Test } from 'src/app/entities/test';
-import { TestsService } from 'src/app/services/tests.service';
 
 @Component({
   selector: 'app-test-popup',

@@ -5,12 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 
 import { TestsDashboardComponent } from './components/principal/principal.component';
 import { TestPopupComponent } from './components/test-popup/test-popup.component';
 
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [TestsDashboardComponent, TestPopupComponent],
@@ -19,11 +20,12 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     ButtonModule,
     CardModule,
+    ConfirmDialogModule,
     DynamicDialogModule,
     ToastModule
   ],
   exports: [TestsDashboardComponent],
-  providers: [MessageService],
+  providers: [ConfirmationService, MessageService],
   entryComponents: [TestPopupComponent]
 })
 export class TestsDashboardModule { }

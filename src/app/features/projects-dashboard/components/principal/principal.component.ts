@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { ProjectsService } from 'src/app/common/services/projects.service';
 import { Project } from 'src/app/entities/project';
-import { ProjectsService } from 'src/app/services/projects.service';
 import { ProjectPopupComponent } from '../project-popup/project-popup.component';
 
 @Component({
@@ -28,7 +28,8 @@ export class ProjectsDashboardComponent implements OnInit {
   openNewProjectPopup(event) {
     const ref = this.dialogService.open(ProjectPopupComponent, {
       header: 'Nuevo Proyecto',
-      'width': '50%'
+      'width': '50%',
+      'height': '75%'
     });
 
     ref.onClose.subscribe((errorMessages: string[]) => {

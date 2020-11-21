@@ -2,7 +2,9 @@
 <h1>Mis Tests</h1>
 <p-card *ngFor="let test of tests">
     <p-header>{{test.name}}</p-header>
+    <button pButton class="p-button-danger" (click)="removeTest(test)" label="Eliminar Test"></button>
 </p-card>
 
 <!--NgPrime features-->
 <p-toast></p-toast>
+<p-confirmDialog header="Eliminar Test" icon="pi pi-exclamation-triangle"></p-confirmDialog>

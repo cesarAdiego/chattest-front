@@ -14,6 +14,7 @@ import { ToastModule } from 'primeng/toast';
 
 import { ProjectPopupComponent } from './components/project-popup/project-popup.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/bot-type-selector.module';
 
 @NgModule({
   declarations: [ProjectsDashboardComponent, ProjectPopupComponent],
@@ -26,7 +27,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     ConfirmDialogModule,
     InputTextModule,
     MultiSelectModule,
-    ToastModule
+    ToastModule,
+    BotTypeSelectorModule
   ],
   exports: [ProjectsDashboardComponent],
   providers: [ConfirmationService, MessageService],

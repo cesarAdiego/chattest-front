@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Test } from 'src/app/entities/test';
 import { environment } from 'src/environments/environment';
-import { Test } from '../entities/test';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +16,9 @@ export class TestsService {
 
   createTest(test: Test) {
     return this.http.post<string[]>(`${environment.apiUrl}/projects/${test.projectId}/tests`, test);
+  }
+
+  deleteTest(test: Test) {
+    return this.http.delete<string[]>(`${environment.apiUrl}/tests/${test.id}`);
   }
 }

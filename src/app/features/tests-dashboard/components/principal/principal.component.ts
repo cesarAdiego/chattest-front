@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { TestsService } from 'src/app/common/services/tests.service';
 import { Test } from 'src/app/entities/test';
-import { TestsService } from 'src/app/services/tests.service';
 import { TestPopupComponent } from '../test-popup/test-popup.component';
 
 @Component({
@@ -16,6 +17,8 @@ export class TestsDashboardComponent implements OnInit {
   tests: Test[];
   constructor(private route: ActivatedRoute,
               private dialogService: DialogService,
+              private confirmationService: ConfirmationService,
+              private messageService: MessageService,
               private testsService: TestsService) { }
 
   ngOnInit(): void {
@@ -32,6 +35,25 @@ export class TestsDashboardComponent implements OnInit {
     ref.onClose.subscribe((errorMessages: string[]) => {
       if(errorMessages && errorMessages.length == 0) {
         this.refreshTests();
+      }
+    });
+  }
+
+  removeTest(test: Test) {
+    this.confirmationService.confirm({
+      message: `¿Estas seguro de que quieres eliminar el proyecto ${test.name}?`,
+      accept: () => {
+          this.testsService.deleteTest(test).subscribe(errorMessages => {
+            if(errorMessages.length > 0) {
+              errorMessages.forEach(errorMessage => {
+                this.messageService.add({severity: 'error', summary: 'Error', detail: errorMessage});
+              });
+            }
+            else {
+              this.messageService.add({severity: 'success', 'summary': 'Test eliminado', detail: 'Test eliminado correctamente'});
+              this.refreshTests();
+            }
+          });
       }
     });
   }
