@@ -6,17 +6,22 @@ import { Language } from 'src/app/entities/language';
   providedIn: 'root'
 })
 export class AppTranslatorService {
-  currentLanguage = 'es';
+  private currentLanguage = 'en';
   constructor(private translate: TranslateService) { }
 
   startTranslation() {
     this.translate.setDefaultLang('es');
-    this.translate.use('es');
+    this.translate.use(this.currentLanguage);
   }
 
   setLanguage(language: Language) {
     this.currentLanguage = language.translationCode;
+    console.log(this.currentLanguage);
     this.translate.use(this.currentLanguage);
+  }
+
+  getCurrentLanguage() {
+    return this.currentLanguage
   }
 
   async getTranslationFrom(key: string) {
