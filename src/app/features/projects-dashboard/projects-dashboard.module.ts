@@ -16,6 +16,7 @@ import { ProjectPopupComponent } from './components/project-popup/project-popup.
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/bot-type-selector.module';
 import { LanguageSelectorModule } from 'src/app/common/modules/language-selector/language-selector.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [ProjectsDashboardComponent, ProjectPopupComponent],
@@ -30,7 +31,8 @@ import { LanguageSelectorModule } from 'src/app/common/modules/language-selector
     MultiSelectModule,
     ToastModule,
     BotTypeSelectorModule,
-    LanguageSelectorModule
+    LanguageSelectorModule,
+    TranslateModule
   ],
   exports: [ProjectsDashboardComponent],
   providers: [ConfirmationService, MessageService],

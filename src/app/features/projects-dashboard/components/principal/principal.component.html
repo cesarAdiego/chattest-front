@@ -1,5 +1,5 @@
 <p-button type="button" label="Nuevo proyecto" (click)="openNewProjectPopup($event)"></p-button>
-<h1>Mis Proyectos</h1>
+<h1>{{'PROJECTS_DASHBOARD.TITLE' | translate}}</h1>
 <p-card *ngFor="let project of projects">
     <p-header>
         {{project.name}}
