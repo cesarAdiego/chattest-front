@@ -15,6 +15,7 @@ import { ToastModule } from 'primeng/toast';
 import { ProjectPopupComponent } from './components/project-popup/project-popup.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/bot-type-selector.module';
+import { LanguageSelectorModule } from 'src/app/common/modules/language-selector/language-selector.module';
 
 @NgModule({
   declarations: [ProjectsDashboardComponent, ProjectPopupComponent],
@@ -28,7 +29,8 @@ import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/
     InputTextModule,
     MultiSelectModule,
     ToastModule,
-    BotTypeSelectorModule
+    BotTypeSelectorModule,
+    LanguageSelectorModule
   ],
   exports: [ProjectsDashboardComponent],
   providers: [ConfirmationService, MessageService],

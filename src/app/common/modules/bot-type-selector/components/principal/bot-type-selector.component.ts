@@ -22,7 +22,6 @@ export class BotTypeSelectorComponent implements OnInit {
   selectBotType(botTypeCard: BotTypeCard) {
     this.botTypes.map(botType => botType.selected = false);
     botTypeCard.selected = true;
-    console.log(botTypeCard);
     let botType = botTypeCard as BotType;
     this.selectedBotTypeEmitter.emit(botType);
   }
