@@ -10,6 +10,8 @@ import { ProjectsDashboardModule } from './features/projects-dashboard/projects-
 import { TestsDashboardModule } from './features/tests-dashboard/tests-dashboard.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NavbarModule } from './common/modules/navbar/navbar.module';
+import { FooterModule } from './common/modules/footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NavbarModule,
+    FooterModule,
     ProjectsDashboardModule,
     TestsDashboardModule,
     TranslateModule.forRoot({

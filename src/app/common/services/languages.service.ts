@@ -13,4 +13,8 @@ export class LanguagesService {
   getAll() {
     return this.http.get<Language[]>(`${environment.apiUrl}/languages`);
   }
+
+  getLanguagesWithTranslation() {
+    return this.http.get<Language[]>(`${environment.apiUrl}/languages/translated`);
+  }
 }

@@ -5,5 +5,7 @@ export class Language {
     name: string;
     isoCode: string;
     image: string;
+    hasTranslation: boolean;
+    translationCode: string;
     projects: Project[]
 }

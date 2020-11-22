@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LanguagesService } from 'src/app/common/services/languages.service';
 import { Language } from 'src/app/entities/language';
 import { LanguageCard } from '../../models/languageCard';
@@ -9,13 +9,12 @@ import { LanguageCard } from '../../models/languageCard';
   styleUrls: ['./language-selector.component.scss']
 })
 export class LanguageSelectorComponent implements OnInit {
-  languages: LanguageCard[];
-  @Output('selectedLaguague') selectedLanguageEmmiter = new EventEmitter<Language>();
+  @Input() languages: LanguageCard[];
+  @Output('selectedLanguague') selectedLanguageEmmiter = new EventEmitter<Language>();
   
   constructor(private languagesService: LanguagesService) { }
 
   ngOnInit(): void {
-    this.languagesService.getAll().subscribe(languages => this.languages = languages.map(language => new LanguageCard(language)));
   }
 
   selectLanguage(languageCard: LanguageCard) {

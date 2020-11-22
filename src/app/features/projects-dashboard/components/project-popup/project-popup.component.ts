@@ -5,6 +5,8 @@ import { Project } from 'src/app/entities/project';
 
 import { MessageService } from 'primeng/api';
 import { ProjectsService } from 'src/app/common/services/projects.service';
+import { LanguageCard } from 'src/app/common/modules/language-selector/models/languageCard';
+import { LanguagesService } from 'src/app/common/services/languages.service';
 
 @Component({
   selector: 'app-project-popup',
@@ -13,12 +15,17 @@ import { ProjectsService } from 'src/app/common/services/projects.service';
 })
 export class ProjectPopupComponent implements OnInit {
   project: Project;
+  languages: LanguageCard[];
   constructor(private projectService: ProjectsService,
+              private languageService: LanguagesService,
               private messageService: MessageService,
               public ref: DynamicDialogRef) { }
 
   ngOnInit(): void {
       this.project = new Project();
+      this.languageService.getAll().subscribe(languages => {
+        this.languages = languages.map(language => new LanguageCard(language));
+      });
   }
 
   closePopup(event) {

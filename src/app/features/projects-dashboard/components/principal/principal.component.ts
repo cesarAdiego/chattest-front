@@ -33,7 +33,7 @@ export class ProjectsDashboardComponent implements OnInit {
     });
 
     ref.onClose.subscribe((errorMessages: string[]) => {
-      if(errorMessages.length == 0) {
+      if(errorMessages && errorMessages.length == 0) {
         this.refreshProjects();
       }
     });
