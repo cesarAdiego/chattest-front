@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { LanguagesService } from 'src/app/common/services/languages.service';
 import { Language } from 'src/app/entities/language';
 import { LanguageCard } from '../../models/languageCard';
 
@@ -10,9 +9,9 @@ import { LanguageCard } from '../../models/languageCard';
 })
 export class LanguageSelectorComponent implements OnInit {
   @Input() languages: LanguageCard[];
-  @Output('selectedLanguague') selectedLanguageEmmiter = new EventEmitter<Language>();
+  @Output('selectedLanguage') selectedLanguageEmmiter = new EventEmitter<Language>();
   
-  constructor(private languagesService: LanguagesService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

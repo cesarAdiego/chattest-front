@@ -33,7 +33,7 @@ import { TranslateModule } from '@ngx-translate/core';
     BotTypeSelectorModule,
     LanguageSelectorModule,
     TranslateModule
-  ],
+    ],
   exports: [ProjectsDashboardComponent],
   providers: [ConfirmationService, MessageService],
   entryComponents: [

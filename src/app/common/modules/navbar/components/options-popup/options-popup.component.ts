@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AppTranslatorService } from 'src/app/common/services/app-translator.service';
 import { LanguagesService } from 'src/app/common/services/languages.service';
 import { Language } from 'src/app/entities/language';
 import { LanguageCard } from '../../../language-selector/models/languageCard';
@@ -12,13 +11,13 @@ import { LanguageCard } from '../../../language-selector/models/languageCard';
 })
 export class OptionsPopupComponent implements OnInit {
   languagesToSelect: LanguageCard[];
-  constructor(private languagesService: LanguagesService, 
-              private translator: AppTranslatorService) { }
+  constructor(private languagesService: LanguagesService,
+              private translateService: TranslateService) { }
 
   ngOnInit(): void {
     this.languagesService.getLanguagesWithTranslation().subscribe(languages => {
       this.languagesToSelect = languages.map(language => new LanguageCard(language));
-      let currentLanguage = this.translator.getCurrentLanguage();
+      let currentLanguage = this.translateService.currentLang;
       let selectedLanguage = this.languagesToSelect.find(l => l.translationCode == currentLanguage);
 
       if(selectedLanguage) {
@@ -29,11 +28,9 @@ export class OptionsPopupComponent implements OnInit {
 
   setSelectedLanguage(language: Language) {
     let selectedLanguage = this.languagesToSelect.find(l => l.id == language.id);
-
+        
     if(selectedLanguage) {
-      this.languagesToSelect.map(l => l.selected = false);
-      selectedLanguage.selected = true;
-      this.translator.setLanguage(selectedLanguage);
+      this.translateService.use(selectedLanguage.translationCode);
     }
   }
 }

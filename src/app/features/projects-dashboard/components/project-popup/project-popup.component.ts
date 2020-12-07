@@ -7,6 +7,8 @@ import { MessageService } from 'primeng/api';
 import { ProjectsService } from 'src/app/common/services/projects.service';
 import { LanguageCard } from 'src/app/common/modules/language-selector/models/languageCard';
 import { LanguagesService } from 'src/app/common/services/languages.service';
+import { ProjectValidatorService } from '../../services/project-validator.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-project-popup',
@@ -17,8 +19,10 @@ export class ProjectPopupComponent implements OnInit {
   project: Project;
   languages: LanguageCard[];
   constructor(private projectService: ProjectsService,
+              private validatorService: ProjectValidatorService,
               private languageService: LanguagesService,
               private messageService: MessageService,
+              private translate: TranslateService,
               public ref: DynamicDialogRef) { }
 
   ngOnInit(): void {
@@ -33,12 +37,10 @@ export class ProjectPopupComponent implements OnInit {
   }
 
   createNewProject() {
-    console.log(this.project);
-    if(!this.project.name || this.project.name == '') {
-      this.messageService.add({severity: 'error', summary:'Error', 'detail': 'El nombre del proyecto no puede estar vacío'});
-    }
-    else if(this.project.botTypeId == 0) {
-      this.messageService.add({severity: 'error', summary:'Error', 'detail': 'Debes seleccionar el tipo de bot que deseas probar'});
+    let validationMessages = this.validatorService.validateNewProject(this.project);
+
+    if(validationMessages.length != 0) {
+      validationMessages.forEach(message => this.messageService.add({severity: 'error', summary: 'Error', 'detail': message}));
     }
     else {
       this.projectService.createProject(this.project).subscribe(errorMessages => {
@@ -48,8 +50,13 @@ export class ProjectPopupComponent implements OnInit {
         });
       }
       else {
-        this.messageService.add({severity: 'success', 'summary': 'Nuevo proyecto creado', 'detail': 'Se ha creado correctamente el nuevo proyecto'});
-        this.ref.close(errorMessages);
+        this.translate.get(['PROJECTS_DASHBOARD.NEW_PROJECT_CREATED_SUMMARY', 'PROJECTS_DASHBOARD.NEW_PROJECT_CREATED_DETAIL']).subscribe(messages => {
+          this.messageService.add({severity: 'success',
+                                   'summary': messages['PROJECTS_DASHBOARD.NEW_PROJECT_CREATED_SUMMARY'],
+                                   'detail': messages['PROJECTS_DASHBOARD.NEW_PROJECT_CREATED_DETAIL']});
+          this.ref.close(errorMessages);
+  
+        });
       }
       });
     }

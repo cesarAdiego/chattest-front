@@ -1,14 +1,21 @@
-<p-button type="button" label="Nuevo proyecto" (click)="openNewProjectPopup($event)"></p-button>
+<p-button type="button" 
+          label="{{'PROJECTS_DASHBOARD.NEW_PROJECT_BUTTON' | translate}}" 
+          (click)="openNewProjectPopup($event)"></p-button>
 <h1>{{'PROJECTS_DASHBOARD.TITLE' | translate}}</h1>
 <p-card *ngFor="let project of projects">
     <p-header>
         {{project.name}}
     </p-header>
-    <button pButton label="Eliminar proyecto" class="p-button-danger" (click)="deleteProject(project)"></button>
-    <button pButton label="Entrar" class="p-button-success" (click)="goToTestsDashboard(project.id)"></button>
+    <button pButton label="{{'PROJECTS_DASHBOARD.REMOVE_PROJECT_BUTTON' | translate}}" 
+            class="p-button-danger"
+            (click)="deleteProject(project)"></button>
+    <button pButton label="{{'PROJECTS_DASHBOARD.ENTER_PROJECT_BUTTON' | translate}}" 
+            class="p-button-success" 
+            (click)="goToTestsDashboard(project.id)"></button>
 
 </p-card>
 
 <!--NgPrime features-->
 <p-toast></p-toast>
-<p-confirmDialog header="Eliminar Proyecto" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-confirmDialog header="{{'PROJECTS_DASHBOARD.REMOVE_PROJECT_HEADER' | translate}}" 
+                 icon="pi pi-exclamation-triangle"></p-confirmDialog>

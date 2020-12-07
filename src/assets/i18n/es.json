@@ -1,5 +1,19 @@
 {
     "PROJECTS_DASHBOARD": {
-        "TITLE": "Mis Proyectos"
+        "TITLE": "Mis Proyectos",
+        "REMOVE_PROJECT_BUTTON": "Eliminar proyecto",
+        "NEW_PROJECT_BUTTON": "Nuevo proyecto",
+        "ENTER_PROJECT_BUTTON": "Entrar",
+        "REMOVE_PROJECT_HEADER": "Eliminar proyecto",
+        "NEW_PROJECT_CREATED_SUMMARY": "Nuevo proyecto creado",
+        "NEW_PROJECT_CREATED_DETAIL": "El nuevo proyecto se ha creado correctamente"
+    },
+    "PROJECT_VALIDATOR": {
+        "EMPTY_NAME": "El nombre del proyecto no puede estar vacío.",
+        "EMPTY_BOT": "Debes seleccionar el tipo de bot que deseas probar."
+    },
+    "LANGUAGE_SELECTOR": {
+        "HEADER_TITLE": "Selecciona el lenguaje de la aplicación",
+        "POPUP_TITLE": "Opciones globales"
     }
 }

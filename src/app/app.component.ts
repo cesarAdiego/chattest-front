@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppTranslatorService } from './common/services/app-translator.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { AppTranslatorService } from './common/services/app-translator.service';
 export class AppComponent {
   title = 'chattest-front';
 
-  constructor(translator: AppTranslatorService) {
-    translator.startTranslation();
+  constructor(translateService: TranslateService) {
+    translateService.use('es');
   }
 }

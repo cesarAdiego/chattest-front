@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { OptionsPopupComponent } from '../options-popup/options-popup.component';
 
@@ -10,16 +11,18 @@ import { OptionsPopupComponent } from '../options-popup/options-popup.component'
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public dialogService: DialogService) { }
+  constructor(public dialogService: DialogService, private translate: TranslateService) { }
 
   ngOnInit(): void {
   }
 
   openConfigurationPopup() {
-    const ref = this.dialogService.open(OptionsPopupComponent, {
-      header: 'Opciones globales',
-      width: '70%',
-      height: '70%'
+    this.translate.get('LANGUAGE_SELECTOR.POPUP_TITLE').subscribe((res: string) => {
+      const ref = this.dialogService.open(OptionsPopupComponent, {
+        header: res,
+        width: '70%',
+        height: '70%'
+      });
     });
   }
 

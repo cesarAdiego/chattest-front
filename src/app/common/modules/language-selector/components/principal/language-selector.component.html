@@ -1,6 +1,6 @@
 <p-carousel [value]="languages" [numVisible]="5" [numScroll]="1">
     <ng-template pTemplate="header">
-        <h5>Selecciona el lenguaje.</h5>
+        <h5>{{'LANGUAGE_SELECTOR.HEADER_TITLE' | translate}}</h5>
     </ng-template>
     <ng-template let-language pTemplate="item">
         <language-card [language]="language" (click)="selectLanguage(language)"></language-card>
