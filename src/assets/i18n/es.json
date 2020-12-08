@@ -14,6 +14,8 @@
     },
     "LANGUAGE_SELECTOR": {
         "HEADER_TITLE": "Selecciona el lenguaje de la aplicación",
-        "POPUP_TITLE": "Opciones globales"
+        "POPUP_TITLE": "Opciones globales",
+        "MODIFIED_LANGUAGE_SUCCESFUL_SUMMARY": "Lenguaje modificado correctamente.",
+        "MODIFIED_LANGUAGE_SUCCESFUL_DETAIL": "El lenguaje de la aplicación se ha modificado correctamente."
     }
 }
