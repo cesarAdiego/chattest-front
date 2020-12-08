@@ -10,8 +10,8 @@ export class UserConfigurationService {
 
   constructor(private http: HttpClient) { }
 
-  Get() {
-    return this.http.get<UserConfiguration>(`${environment.apiUrl}/configuration`);
+  async Get() {
+    return this.http.get<UserConfiguration>(`${environment.apiUrl}/configuration`).toPromise();
   }
 
   Put(userConfiguration: UserConfiguration) {

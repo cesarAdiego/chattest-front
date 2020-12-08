@@ -1,3 +1,9 @@
-<navbar></navbar>
-<router-outlet></router-outlet>
-<footer></footer>
+<ng-template [ngIf]="firstLoading"><loading-screen></loading-screen></ng-template>
+
+<ng-template [ngIf]="!firstLoading && initialLoadingSuccesful">
+    <navbar></navbar>
+    <router-outlet></router-outlet>
+    <footer></footer>
+</ng-template>
+
+<ng-template [ngIf]="!firstLoading && !initialLoadingSuccesful"><error-screen></error-screen></ng-template>

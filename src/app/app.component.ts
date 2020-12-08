@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserConfigurationService } from './common/services/user-configuration.service';
@@ -9,14 +10,30 @@ import { UserConfigurationService } from './common/services/user-configuration.s
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'chattest-front';
+  title = 'Chattest';
+  initialLoadingSuccesful: boolean;
+  firstLoading: boolean = true;
 
-  constructor(userConfiguration: UserConfigurationService,
-              translateService: TranslateService,
-              cookieService: CookieService) {
-    userConfiguration.Get().subscribe(res => {
-      cookieService.set('lang', res.language.isoCode);
-      translateService.use(res.language.translationCode);
-    });
+  constructor(private userConfiguration: UserConfigurationService,
+              private translateService: TranslateService,
+              private cookieService: CookieService,
+              private titleService: Title) 
+              {
+                titleService.setTitle(this.title);
+              }
+
+  async ngOnInit(): Promise<void> {
+    try {
+    let config = await this.userConfiguration.Get();
+    this.cookieService.set('lang', config.language.isoCode);
+    this.translateService.use(config.language.translationCode);
+    this.initialLoadingSuccesful = true;
+    } catch(ex) {
+      console.log(ex);
+      this.initialLoadingSuccesful = false;
+    }
+    finally {
+      this.firstLoading = false;
+    }
   }
 }

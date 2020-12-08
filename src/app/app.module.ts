@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -14,6 +14,8 @@ import { NavbarModule } from './common/modules/navbar/navbar.module';
 import { FooterModule } from './common/modules/footer/footer.module';
 import { CookieService } from 'ngx-cookie-service';
 import { LanguageInterceptor } from './common/interceptors/languageInterceptor';
+import { LoadingScreenModule } from './features/loading-screen/loading-screen.module';
+import { ErrorScreenModule } from './features/error-screen/error-screen.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,6 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterModule,
     ProjectsDashboardModule,
     TestsDashboardModule,
+    LoadingScreenModule,
+    ErrorScreenModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -43,7 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       defaultLanguage: 'es'
     })
   ],
-  providers: [CookieService, {provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true}],
+  providers: [CookieService, 
+              {provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
