@@ -12,6 +12,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NavbarModule } from './common/modules/navbar/navbar.module';
 import { FooterModule } from './common/modules/footer/footer.module';
+import { CookieService } from 'ngx-cookie-service';
+import { LanguageInterceptor } from './common/interceptors/languageInterceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -41,7 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       defaultLanguage: 'es'
     })
   ],
-  providers: [],
+  providers: [CookieService, {provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

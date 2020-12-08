@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';
 import { LanguagesService } from 'src/app/common/services/languages.service';
 import { UserConfigurationService } from 'src/app/common/services/user-configuration.service';
@@ -17,7 +18,8 @@ export class OptionsPopupComponent implements OnInit {
   constructor(private languagesService: LanguagesService,
               private userConfiguration: UserConfigurationService,
               private translateService: TranslateService,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.languagesService.getLanguagesWithTranslation().subscribe(languages => {
@@ -43,6 +45,7 @@ export class OptionsPopupComponent implements OnInit {
         }
         else {
           this.translateService.use(selectedLanguage.translationCode);
+          this.cookieService.set('lang', selectedLanguage.isoCode);
           this.translateService.get(['LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_SUMMARY', 
                                      'LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_DETAIL'])
                                .subscribe((res: string[]) => {
