@@ -17,9 +17,10 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/bot-type-selector.module';
 import { LanguageSelectorModule } from 'src/app/common/modules/language-selector/language-selector.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { ProjectSearcherComponent } from './components/project-searcher/project-searcher.component';
 
 @NgModule({
-  declarations: [ProjectsDashboardComponent, ProjectPopupComponent],
+  declarations: [ProjectsDashboardComponent, ProjectPopupComponent, ProjectSearcherComponent],
   imports: [
     CommonModule,
     FormsModule,

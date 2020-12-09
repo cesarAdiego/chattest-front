@@ -1,8 +1,9 @@
+<h1>{{'PROJECTS_DASHBOARD.TITLE' | translate}}</h1>
+<project-searcher [projectsToFilter]="allProjects" (filterEvent)="filterProjects($event)"></project-searcher>
 <p-button type="button" 
           label="{{'PROJECTS_DASHBOARD.NEW_PROJECT_BUTTON' | translate}}" 
           (click)="openNewProjectPopup($event)"></p-button>
-<h1>{{'PROJECTS_DASHBOARD.TITLE' | translate}}</h1>
-<p-card *ngFor="let project of projects">
+<p-card *ngFor="let project of projectsToShow">
     <p-header>
         {{project.name}}
     </p-header>

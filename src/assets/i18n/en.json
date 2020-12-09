@@ -1,4 +1,10 @@
 {
+    "BOT_SELECTOR": {
+        "HEADER_TITLE": "Select the bot type"
+    },
+    "PROJECT_FILTER": {
+        "NAME_PLACEHOLDER": "Project name"
+    },
     "PROJECTS_DASHBOARD": {
         "TITLE": "My Projects",
         "REMOVE_PROJECT_BUTTON": "Remove project",
@@ -7,6 +13,11 @@
         "REMOVE_PROJECT_HEADER": "Remove project",
         "NEW_PROJECT_CREATED_SUMMARY": "New project created",
         "NEW_PROJECT_CREATED_DETAIL": "The new project has been created correctly"
+    },
+    "PROJECT_POPUP": {
+        "CREATE_PROJECT_BUTTON": "Create new project",
+        "CLOSE_BUTTON": "Close",
+        "PROJECT_NAME_LABEL": "Project name"
     },
     "PROJECT_VALIDATOR": {
         "EMPTY_NAME": "The project name cannot be empty",

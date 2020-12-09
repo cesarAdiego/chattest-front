@@ -13,7 +13,8 @@ import { ProjectPopupComponent } from '../project-popup/project-popup.component'
   providers: [DialogService]
 })
 export class ProjectsDashboardComponent implements OnInit {
-  projects: Project[];
+  allProjects: Project[];
+  projectsToShow: Project[];
   displayNewProjectDialog: boolean = false;
   constructor(private projectsService: ProjectsService,
               private confirmationService: ConfirmationService,
@@ -64,6 +65,13 @@ export class ProjectsDashboardComponent implements OnInit {
   }
 
   refreshProjects() {
-    this.projectsService.getAllProjects().subscribe(projects => this.projects = projects);
+    this.projectsService.getAllProjects().subscribe(projects => {
+      this.allProjects = projects;
+      this.projectsToShow = projects;
+    });
+  }
+
+  filterProjects(event: Project[]) {
+    this.projectsToShow = event;
   }
 }
