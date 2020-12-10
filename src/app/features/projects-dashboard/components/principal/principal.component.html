@@ -1,11 +1,15 @@
 <h1>{{'PROJECTS_DASHBOARD.TITLE' | translate}}</h1>
-<project-searcher [projectsToFilter]="allProjects" (filterEvent)="filterProjects($event)"></project-searcher>
 <p-button type="button" 
           label="{{'PROJECTS_DASHBOARD.NEW_PROJECT_BUTTON' | translate}}" 
           (click)="openNewProjectPopup($event)"></p-button>
+<p-toggleButton [(ngModel)]="showSearcher" onLabel="{{'PROJECTS_DASHBOARD.HIDE_SEARCHER_LABEL' | translate}}"
+                offLabel="{{'PROJECTS_DASHBOARD.SHOW_SEARCHER_LABEL' | translate}}"
+                onIcon = "pi pi-search-minus" offIcon="pi pi-search-plus"></p-toggleButton>
+<project-searcher *ngIf="showSearcher" [projectsToFilter]="allProjects"
+                  (filterEvent)="filterProjects($event)"></project-searcher>
 <p-card *ngFor="let project of projectsToShow">
     <p-header>
-        {{project.name}}
+            {{project.name}}
     </p-header>
     <button pButton label="{{'PROJECTS_DASHBOARD.REMOVE_PROJECT_BUTTON' | translate}}" 
             class="p-button-danger"
@@ -13,7 +17,6 @@
     <button pButton label="{{'PROJECTS_DASHBOARD.ENTER_PROJECT_BUTTON' | translate}}" 
             class="p-button-success" 
             (click)="goToTestsDashboard(project.id)"></button>
-
 </p-card>
 
 <!--NgPrime features-->

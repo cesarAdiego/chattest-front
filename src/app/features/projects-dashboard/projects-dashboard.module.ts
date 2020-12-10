@@ -6,11 +6,13 @@ import { ProjectsDashboardComponent } from './components/principal/principal.com
 
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ToastModule } from 'primeng/toast'; 
+import { RippleModule } from 'primeng/ripple';
 
 import { ProjectPopupComponent } from './components/project-popup/project-popup.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -26,11 +28,13 @@ import { ProjectSearcherComponent } from './components/project-searcher/project-
     FormsModule,
     CardModule,
     ButtonModule,
+    ToggleButtonModule,
     DynamicDialogModule,
     ConfirmDialogModule,
     InputTextModule,
     MultiSelectModule,
     ToastModule,
+    RippleModule,
     BotTypeSelectorModule,
     LanguageSelectorModule,
     TranslateModule

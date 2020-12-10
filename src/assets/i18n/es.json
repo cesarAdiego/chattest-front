@@ -12,7 +12,10 @@
         "ENTER_PROJECT_BUTTON": "Entrar",
         "REMOVE_PROJECT_HEADER": "Eliminar proyecto",
         "NEW_PROJECT_CREATED_SUMMARY": "Nuevo proyecto creado",
-        "NEW_PROJECT_CREATED_DETAIL": "El nuevo proyecto se ha creado correctamente"
+        "NEW_PROJECT_CREATED_DETAIL": "El nuevo proyecto se ha creado correctamente",
+        "SHOW_SEARCHER_LABEL": "Mostrar buscador",
+        "HIDE_SEARCHER_LABEL": "Ocultar buscador",
+        "SEARCHER_LABEL": "Buscador"
     },
     "PROJECT_POPUP": {
         "CREATE_PROJECT_BUTTON": "Crear nuevo proyecto",

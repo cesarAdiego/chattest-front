@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
+import { PrimeNGConfig } from 'primeng/api';
 import { UserConfigurationService } from './common/services/user-configuration.service';
 
 @Component({
@@ -17,9 +18,11 @@ export class AppComponent {
   constructor(private userConfiguration: UserConfigurationService,
               private translateService: TranslateService,
               private cookieService: CookieService,
-              private titleService: Title) 
+              private titleService: Title,
+              private primeNgConfig: PrimeNGConfig) 
               {
                 titleService.setTitle(this.title);
+                this.primeNgConfig.ripple = true;
               }
 
   async ngOnInit(): Promise<void> {

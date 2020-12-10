@@ -15,6 +15,7 @@ import { ProjectPopupComponent } from '../project-popup/project-popup.component'
 export class ProjectsDashboardComponent implements OnInit {
   allProjects: Project[];
   projectsToShow: Project[];
+  showSearcher: boolean = false;
   displayNewProjectDialog: boolean = false;
   constructor(private projectsService: ProjectsService,
               private confirmationService: ConfirmationService,
@@ -61,7 +62,7 @@ export class ProjectsDashboardComponent implements OnInit {
           }
         });
       }
-    })
+    });
   }
 
   refreshProjects() {

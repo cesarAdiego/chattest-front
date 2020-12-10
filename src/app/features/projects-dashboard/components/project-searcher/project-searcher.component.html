@@ -1,4 +1,7 @@
-<div style="display: block;">
+<p-card>
+    <p-header>
+        <h3>{{'PROJECTS_DASHBOARD.SEARCHER_LABEL' | translate}}</h3>
+    </p-header>
     <input type="text" pInputText (keyup)="filterByName()" [(ngModel)]="projectName" 
            placeholder="{{'PROJECT_FILTER.NAME_PLACEHOLDER'| translate}}">
-</div>
+</p-card>

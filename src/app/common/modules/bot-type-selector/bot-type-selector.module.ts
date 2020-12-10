@@ -6,6 +6,8 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { CarouselModule } from 'primeng/carousel';
 import { CardModule } from 'primeng/card';
+import { RippleModule } from 'primeng/ripple';
+
 import { BotTypeCardComponent } from './components/bot-type-card/bot-type-card.component';
 
 @NgModule({
@@ -14,6 +16,7 @@ import { BotTypeCardComponent } from './components/bot-type-card/bot-type-card.c
     CommonModule,
     TranslateModule,
     CarouselModule,
+    RippleModule,
     CardModule
   ],
   exports: [BotTypeSelectorComponent]

@@ -17,6 +17,8 @@ import { LanguageInterceptor } from './common/interceptors/languageInterceptor';
 import { LoadingScreenModule } from './features/loading-screen/loading-screen.module';
 import { ErrorScreenModule } from './features/error-screen/error-screen.module';
 
+import { RippleModule } from 'primeng/ripple';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -45,7 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       },
       defaultLanguage: 'es'
-    })
+    }),
+    RippleModule
   ],
   providers: [CookieService, 
               {provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true}],
