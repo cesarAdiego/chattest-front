@@ -1,10 +1,5 @@
-<button pButton label="Nuevo Test" class="p-button-primary" (click)="createTestPopup()"></button>
-<h1>Mis Tests</h1>
-<p-card *ngFor="let test of tests">
-    <p-header>{{test.name}}</p-header>
-    <button pButton class="p-button-danger" (click)="removeTest(test)" label="Eliminar Test"></button>
-</p-card>
-
-<!--NgPrime features-->
-<p-toast></p-toast>
-<p-confirmDialog header="Eliminar Test" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<test-list [tests]="tests" 
+           (testListModifiedEvent)="refreshTests()"
+           (selectTestEvent)="setSelectedTest($event)"
+           style="width: 30%; display:inline-block;"></test-list>
+<test-board *ngIf="selectedTest" [test]="selectedTest" style="width: 70%; display: inline-block;"></test-board>

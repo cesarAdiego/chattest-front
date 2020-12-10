@@ -15,6 +15,7 @@ import { TestPopupComponent } from '../test-popup/test-popup.component';
 export class TestsDashboardComponent implements OnInit {
   projectId: number;
   tests: Test[];
+  selectedTest: Test;
   constructor(private route: ActivatedRoute,
               private dialogService: DialogService,
               private confirmationService: ConfirmationService,
@@ -26,39 +27,11 @@ export class TestsDashboardComponent implements OnInit {
     this.refreshTests();
   }
 
-  createTestPopup() {
-    const ref = this.dialogService.open(TestPopupComponent, {
-      'header': 'Nuevo Test',
-      'width': '50%'
-    });
-
-    ref.onClose.subscribe((errorMessages: string[]) => {
-      if(errorMessages && errorMessages.length == 0) {
-        this.refreshTests();
-      }
-    });
-  }
-
-  removeTest(test: Test) {
-    this.confirmationService.confirm({
-      message: `¿Estas seguro de que quieres eliminar el proyecto ${test.name}?`,
-      accept: () => {
-          this.testsService.deleteTest(test).subscribe(errorMessages => {
-            if(errorMessages.length > 0) {
-              errorMessages.forEach(errorMessage => {
-                this.messageService.add({severity: 'error', summary: 'Error', detail: errorMessage});
-              });
-            }
-            else {
-              this.messageService.add({severity: 'success', 'summary': 'Test eliminado', detail: 'Test eliminado correctamente'});
-              this.refreshTests();
-            }
-          });
-      }
-    });
-  }
-
   refreshTests() {
     this.testsService.getAllTestsFromProject(this.projectId).subscribe(tests => this.tests = tests);
+  }
+
+  setSelectedTest(event: Test) {
+    this.selectedTest = event;
   }
 }
