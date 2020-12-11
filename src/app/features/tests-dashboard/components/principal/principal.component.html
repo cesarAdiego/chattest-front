@@ -1,5 +1,3 @@
 <test-list [tests]="tests" 
-           (testListModifiedEvent)="refreshTests()"
-           (selectTestEvent)="setSelectedTest($event)"
            style="width: 30%; display:inline-block;"></test-list>
 <test-board *ngIf="selectedTest" [test]="selectedTest" style="width: 70%; display: inline-block;"></test-board>

@@ -3,6 +3,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { TestsService } from 'src/app/common/services/tests.service';
 import { Test } from 'src/app/entities/test';
+import { TestListModifiedEventService } from '../../services/test-list-modified-event.service';
 import { TestPopupComponent } from '../test-popup/test-popup.component';
 
 @Component({
@@ -12,12 +13,12 @@ import { TestPopupComponent } from '../test-popup/test-popup.component';
 })
 export class TestListComponent implements OnInit {
   @Input() tests: Test[];
-  @Output() testListModifiedEvent = new EventEmitter<void>();
-  @Output() selectTestEvent = new EventEmitter<Test>();
+  
   constructor(private dialogService: DialogService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private testsService: TestsService) { }
+    private testsService: TestsService,
+    private testListModifiedEvent: TestListModifiedEventService) { }
 
   ngOnInit(): void {
   }
@@ -52,9 +53,5 @@ export class TestListComponent implements OnInit {
           });
       }
     });
-  }
-
-  selectTest(test: Test) {
-    this.selectTestEvent.emit(test);
   }
 }

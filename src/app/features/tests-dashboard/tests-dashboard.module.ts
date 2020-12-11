@@ -8,16 +8,18 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
+import { MenuModule } from 'primeng/menu';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { TestsDashboardComponent } from './components/principal/principal.component';
 import { TestPopupComponent } from './components/test-popup/test-popup.component';
 
-import { ConfirmationService, MessageService } from 'primeng/api';
 import { TestListComponent } from './components/test-list/test-list.component';
 import { TestBoardComponent } from './components/test-board/test-board.component';
+import { TestItemComponent } from './components/test-item/test-item.component';
 
 @NgModule({
-  declarations: [TestsDashboardComponent, TestPopupComponent, TestListComponent, TestBoardComponent],
+  declarations: [TestsDashboardComponent, TestPopupComponent, TestListComponent, TestBoardComponent, TestItemComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,6 +27,7 @@ import { TestBoardComponent } from './components/test-board/test-board.component
     CardModule,
     RippleModule,
     ToastModule,
+    MenuModule,
     ConfirmDialogModule,
     DynamicDialogModule,
   ],
