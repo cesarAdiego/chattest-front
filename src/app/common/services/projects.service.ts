@@ -21,4 +21,12 @@ export class ProjectsService {
   public deleteProject(projectId: number) {
     return this.http.delete<string[]>(`${environment.apiUrl}/projects/${projectId}`);
   }
+
+  public cloneProject(projectId: number, newProjectName: string) {
+    return this.http.get<string[]>(`${environment.apiUrl}/projects/${projectId}/clone/${newProjectName}`);
+  }
+
+  public export(projectId: number) {
+    return this.http.post(`${environment.apiUrl}/projects/${projectId}/export`, undefined, { responseType: 'blob'});
+  }
 }

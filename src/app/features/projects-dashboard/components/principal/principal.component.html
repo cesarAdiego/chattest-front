@@ -7,19 +7,8 @@
                 onIcon = "pi pi-search-minus" offIcon="pi pi-search-plus"></p-toggleButton>
 <project-searcher *ngIf="showSearcher" [projectsToFilter]="allProjects"
                   (filterEvent)="filterProjects($event)"></project-searcher>
-<p-card *ngFor="let project of projectsToShow">
-    <p-header>
-            {{project.name}}
-    </p-header>
-    <button pButton label="{{'PROJECTS_DASHBOARD.REMOVE_PROJECT_BUTTON' | translate}}" 
-            class="p-button-danger"
-            (click)="deleteProject(project)"></button>
-    <button pButton label="{{'PROJECTS_DASHBOARD.ENTER_PROJECT_BUTTON' | translate}}" 
-            class="p-button-success" 
-            (click)="goToTestsDashboard(project.id)"></button>
-</p-card>
+<projects-list [projects]="projectsToShow"></projects-list>
 
 <!--NgPrime features-->
 <p-toast></p-toast>
-<p-confirmDialog header="{{'PROJECTS_DASHBOARD.REMOVE_PROJECT_HEADER' | translate}}" 
-                 icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-confirmDialog></p-confirmDialog>

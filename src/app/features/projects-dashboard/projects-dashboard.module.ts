@@ -10,9 +10,12 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextModule } from 'primeng/inputtext';
+import { MenuModule } from 'primeng/menu';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ToastModule } from 'primeng/toast'; 
 import { RippleModule } from 'primeng/ripple';
+
+import { FileSaverModule } from 'ngx-filesaver';
 
 import { ProjectPopupComponent } from './components/project-popup/project-popup.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -20,9 +23,11 @@ import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/
 import { LanguageSelectorModule } from 'src/app/common/modules/language-selector/language-selector.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectSearcherComponent } from './components/project-searcher/project-searcher.component';
+import { ProjectItemComponent } from './components/project-item/project-item.component';
+import { ProjectsListComponent } from './components/projects-list/projects-list.component';
 
 @NgModule({
-  declarations: [ProjectsDashboardComponent, ProjectPopupComponent, ProjectSearcherComponent],
+  declarations: [ProjectsDashboardComponent, ProjectPopupComponent, ProjectSearcherComponent, ProjectItemComponent, ProjectsListComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -32,9 +37,11 @@ import { ProjectSearcherComponent } from './components/project-searcher/project-
     DynamicDialogModule,
     ConfirmDialogModule,
     InputTextModule,
+    MenuModule,
     MultiSelectModule,
     ToastModule,
     RippleModule,
+    FileSaverModule,
     BotTypeSelectorModule,
     LanguageSelectorModule,
     TranslateModule
