@@ -1,0 +1,8 @@
+<p-card>
+    <p-toast></p-toast>
+    <button pButton class="p-button-danger" 
+            label="{{'IMPORT_PROJECT.CANCEL_BUTTON' | translate}}" 
+            click="cancelImport()"></button>
+    <p-steps [model]="menuItems" [readonly]="true"></p-steps>
+</p-card>
+<router-outlet></router-outlet>

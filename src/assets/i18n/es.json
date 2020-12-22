@@ -2,14 +2,24 @@
     "BOT_SELECTOR": {
         "HEADER_TITLE": "Selecciona el tipo de bot"
     },
+    "FOOTER": {
+        "LABEL": "Hecho con <3 por Chattest - {{value}}"
+    },
     "PROJECT_FILTER": {
         "NAME_PLACEHOLDER": "Nombre del proyecto"
+    },
+    "IMPORT_PROJECT": {
+        "CANCEL_BUTTON": "Cancelar importacion",
+        "ABORT_CANCEL": "Vas a abortar el proceso de importación. ¿Estás seguro?",
+        "CHOOSE_TITLE": "Para empezar el proceso, necesito que importes un proyecto:",
+        "PROJECT_NAME": "Nombre del proyecto"
     },
     "PROJECTS_DASHBOARD": {
         "TITLE": "Mis Proyectos",
         "REMOVE_PROJECT_BUTTON": "Eliminar proyecto",
         "NEW_PROJECT_BUTTON": "Nuevo proyecto",
         "ENTER_PROJECT_BUTTON": "Entrar",
+        "IMPORT_PROJECT_BUTTON": "Importar proyecto",
         "REMOVE_PROJECT_HEADER": "Eliminar proyecto",
         "NEW_PROJECT_CREATED_SUMMARY": "Nuevo proyecto creado",
         "NEW_PROJECT_CREATED_DETAIL": "El nuevo proyecto se ha creado correctamente",

@@ -3,7 +3,7 @@
 <ng-template [ngIf]="!firstLoading && initialLoadingSuccesful">
     <navbar></navbar>
     <router-outlet></router-outlet>
-    <footer></footer>
+    <!-- <footer></footer> -->
 </ng-template>
 
 <ng-template [ngIf]="!firstLoading && !initialLoadingSuccesful"><error-screen></error-screen></ng-template>

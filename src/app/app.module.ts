@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LanguageInterceptor } from './common/interceptors/languageInterceptor';
 import { LoadingScreenModule } from './features/loading-screen/loading-screen.module';
 import { ErrorScreenModule } from './features/error-screen/error-screen.module';
+import { ImportProjectDashboardModule } from './features/import-project-dashboard/import-project-dashboard.module';
 
 import { RippleModule } from 'primeng/ripple';
 
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TestsDashboardModule,
     LoadingScreenModule,
     ErrorScreenModule,
+    ImportProjectDashboardModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -52,4 +52,8 @@ export class ProjectsDashboardComponent implements OnInit {
   filterProjects(event: Project[]) {
     this.projectsToShow = event;
   }
+
+  goToImportProjectPage() {
+    this.router.navigate(['/projects/import/uploadFile']);
+  }
 }
