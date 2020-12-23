@@ -1,0 +1,14 @@
+<p-card header="{{'IMPORT_PROJECT.LAST_DETAILS_HEADER' | translate}}">
+    <span class="p-float-label">
+        <input id="projectName-input" type="text" pInputText [(ngModel)]="newProjectName"/>
+        <label for="projectName-input">{{'IMPORT_PROJECT.PROJECT_NAME_LABEL' | translate}}</label>
+    </span>
+    <div class="p-grid p-nogutter p-justify-between">
+        <p-button label="{{'IMPORT_PROJECT.PREVIOUS_BUTTON' | translate}}"
+                  icon="pi pi-arrow-left"
+                  (click)="goToPreviousStep()"></p-button>
+        <p-button label="{{'IMPORT_PROJECT.IMPORT_BUTTON' | translate}}"
+                  icon="pi pi-check"
+                  (click)="importProject()"></p-button>
+    </div>
+</p-card>

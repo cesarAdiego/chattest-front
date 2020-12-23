@@ -2,7 +2,12 @@
     <p-toast></p-toast>
     <button pButton class="p-button-danger" 
             label="{{'IMPORT_PROJECT.CANCEL_BUTTON' | translate}}" 
-            click="cancelImport()"></button>
+            (click)="cancelImport()"
+            icon="pi pi-times"></button>
     <p-steps [model]="menuItems" [readonly]="true"></p-steps>
 </p-card>
 <router-outlet></router-outlet>
+
+<!-- PrimeNg features-->
+<p-confirmDialog header="{{'IMPORT_PROJECT.CANCEL_TITLE' | translate}}" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-toast></p-toast>

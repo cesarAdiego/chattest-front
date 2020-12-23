@@ -1,0 +1,13 @@
+<p-card header="{{'IMPORT_PROJECT.SELECT_TESTS_TITLE' | translate}}">
+<p-button label="{{'IMPORT_PROJECT.SELECT_ALL_BUTTON' | translate}}" (click)="selectAllTests()"></p-button>
+<p-button label="{{'IMPORT_PROJECT.UNSELECT_ALL_BUTTON' | translate}}" (click)="unselectAllTests()"></p-button>
+<select-test-card *ngFor="let test of testsToImport" [selectTest]="test"></select-test-card>
+<div class="p-grid p-nogutter p-justify-between">
+    <p-button label="{{'IMPORT_PROJECT.PREVIOUS_BUTTON' | translate}}"
+              icon="pi pi-arrow-left"
+              (click)="goToPreviousStep()"></p-button>
+    <p-button label="{{'IMPORT_PROJECT.NEXT_BUTTON' | translate}}"
+              icon="pi pi-arrow-right"
+              (click)="goToNextStep()"></p-button>
+</div>
+</p-card>

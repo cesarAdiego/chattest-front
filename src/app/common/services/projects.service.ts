@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { OperationResult } from 'src/app/entities/operationResult';
 import { Project } from 'src/app/entities/project';
+import { ProjectImport } from 'src/app/features/import-project-dashboard/entities/projectImport';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -24,6 +26,10 @@ export class ProjectsService {
 
   public cloneProject(projectId: number, newProjectName: string) {
     return this.http.get<string[]>(`${environment.apiUrl}/projects/${projectId}/clone/${newProjectName}`);
+  }
+
+  public import(projectToImport: ProjectImport) {
+    return this.http.post<string[]>(`${environment.apiUrl}/projects/import`, projectToImport);
   }
 
   public export(projectId: number) {

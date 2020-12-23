@@ -2,6 +2,10 @@
     "BOT_SELECTOR": {
         "HEADER_TITLE": "Select the bot type"
     },
+    "CONFIRMATION_POPUP": {
+        "YES_LABEL": "Yes",
+        "NO_LABEL": "No"
+    },
     "FOOTER": {
         "LABEL": "Made with <3 by Chattest - {{value}}"
     },
@@ -10,22 +14,48 @@
     },
     "IMPORT_PROJECT": {
         "CANCEL_BUTTON": "Cancel import",
-        "ABORT_CANCEL": "You are going to abort the import process. Are you sure?",
-        "CHOOSE_TITLE": "In order to start the process, you need to import a project:",
-        "PROJECT_NAME": "Project name"
+        "CANCEL_TITLE": "Cancel import",
+        "CANCEL_MESSAGE": "You are going to abort the import process. Are you sure?",
+        "UPLOAD_TITLE": "In order to start the process, you need to import a project:",
+        "UPLOAD_STEP": "Upload a file",
+        "SELECT_TESTS_STEP": "Select tests",
+        "LAST_DETAILS_STEP": "Last details",
+        "LAST_DETAILS_HEADER": "Please fill these fields to complete the import process:",
+        "PROJECT_NAME_LABEL": "Project name",
+        "SELECT_TESTS_TITLE": "Please, select the tests to import",
+        "SELECT_TESTS_ERROR": "You need to select at least one test to import.",
+        "SELECT_ALL_BUTTON": "Select all",
+        "UNSELECT_ALL_BUTTON": "Unselect all",
+        "NEXT_BUTTON": "Next",
+        "PREVIOUS_BUTTON": "Previous",
+        "IMPORT_BUTTON": "Import",
+        "PROJECT_NAME_EMPTY": "You have to introduce a name for the project you are importing.",
+        "SUCCESS_IMPORT": "The project importation has finished succesfully"
     },
     "PROJECTS_DASHBOARD": {
         "TITLE": "My Projects",
-        "REMOVE_PROJECT_BUTTON": "Remove project",
         "NEW_PROJECT_BUTTON": "New project",
         "ENTER_PROJECT_BUTTON": "Enter",
         "IMPORT_PROJECT_BUTTON": "Import project",
-        "REMOVE_PROJECT_HEADER": "Remove project",
         "NEW_PROJECT_CREATED_SUMMARY": "New project created",
         "NEW_PROJECT_CREATED_DETAIL": "The new project has been created correctly",
         "SHOW_SEARCHER_LABEL": "Show searcher",
         "HIDE_SEARCHER_LABEL": "Hide searcher",
-        "SEARCHER_LABEL": "Searcher"
+        "SEARCHER_LABEL": "Searcher",
+        "DELETE_LABEL": "Delete",
+        "CLONE_LABEL": "Clone",
+        "EXPORT_LABEL": "Export"
+    },
+    "PROJECT_ITEM": {
+        "DELETE_LABEL": "Delete",
+        "CLONE_LABEL": "Clone",
+        "EXPORT_LABEL": "Export"
+    },
+    "DELETE_PROJECT_POPUP": {
+        "HEADER": "Delete project",
+        "MESSAGE": "Are you sure you want to delete the project {{value}}?",
+        "SUCCESS_SUMMARY": "Removed project",
+        "SUCCESS_MESSAGE": "The project has removed successfully"
     },
     "PROJECT_POPUP": {
         "CREATE_PROJECT_BUTTON": "Create new project",
