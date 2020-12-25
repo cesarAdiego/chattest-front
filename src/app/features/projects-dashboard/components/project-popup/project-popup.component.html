@@ -1,6 +1,5 @@
 <p></p>
 <br/>
-<bot-type-selector (selectedBotType)="setSelectedBotType($event)"></bot-type-selector>
 <language-selector [languages]="languages"></language-selector>
 <div class="p-formgroup-inline">
     <div class="p-field">
@@ -9,6 +8,19 @@
             <label for="projectNameId">{{'PROJECT_POPUP.PROJECT_NAME_LABEL' | translate}}</label>
     </span>
     </div>
+</div>
+<bot-type-selector (selectedBotType)="setSelectedBotType($event)"></bot-type-selector>
+<div *ngIf="project.botType && project.botType.isCognigy()" class="p-grid p-nogutter">
+        <span class="p-float-label">
+                <input id="config-url" type="text" pInputText [(ngModel)]="cognigyConfiguration.configUrl"/>
+                <label for="config-url">{{'PROJECT_POPUP.COGNIGY_BOT.CONFIG_URL' | translate}}</label>
+        </span>
+</div>
+<div *ngIf="project.botType && project.botType.isDialogFlow()" class="p-grid p-nogutter">
+        <span class="p-float-label">
+                <input id="project-id" type="text" pInputText [(ngModel)]="dialogFlowConfiguration.projectId"/>
+                <label for="project-id">{{'PROJECT_POPUP.DIALOGFLOW_BOT.PROJECT_ID' | translate}}</label>
+        </span>
 </div>
 <button pButton type="button" label="{{'PROJECT_POPUP.CREATE_PROJECT_BUTTON' | translate}}" 
         (click)="createNewProject()"></button>

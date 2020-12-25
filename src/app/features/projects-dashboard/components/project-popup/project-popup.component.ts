@@ -9,6 +9,9 @@ import { LanguageCard } from 'src/app/common/modules/language-selector/models/la
 import { LanguagesService } from 'src/app/common/services/languages.service';
 import { ProjectValidatorService } from '../../services/project-validator.service';
 import { TranslateService } from '@ngx-translate/core';
+import { CognigyConfiguration } from 'src/app/entities/cognigyConfiguration';
+import { DialogFlowConfiguration } from 'src/app/entities/dialogFlowConfiguration';
+import { ProjectConfiguration } from 'src/app/entities/projectConfiguration';
 
 @Component({
   selector: 'app-project-popup',
@@ -17,6 +20,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ProjectPopupComponent implements OnInit {
   project: Project;
+  cognigyConfiguration: CognigyConfiguration = new CognigyConfiguration();
+  dialogFlowConfiguration: DialogFlowConfiguration = new DialogFlowConfiguration();
   languages: LanguageCard[];
   constructor(private projectService: ProjectsService,
               private validatorService: ProjectValidatorService,
@@ -37,6 +42,7 @@ export class ProjectPopupComponent implements OnInit {
   }
 
   createNewProject() {
+    this.setConfiguration();
     let validationMessages = this.validatorService.validateNewProject(this.project);
 
     if(validationMessages.length != 0) {
@@ -64,5 +70,19 @@ export class ProjectPopupComponent implements OnInit {
 
   setSelectedBotType(event) {
     this.project.botTypeId = event.id;
+    this.project.botType = event;
+  }
+
+  setConfiguration() {
+    this.project.configuration = new ProjectConfiguration();
+    
+    if(this.project.botType) {
+      if(this.project.botType.isCognigy()) {
+        this.project.configuration.cognigyConfiguration = this.cognigyConfiguration;
+      }
+      else if(this.project.botType.isDialogFlow()) {
+        this.project.configuration.dialogFlowConfiguration = this.dialogFlowConfiguration;
+      }
+  }
   }
 }

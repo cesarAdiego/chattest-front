@@ -1,3 +1,4 @@
+import { BotType } from './botType';
 import { Language } from './language';
 import { ProjectConfiguration } from './projectConfiguration';
 import { Test } from './test';
@@ -8,5 +9,6 @@ export class Project {
     public botTypeId: number;
     public tests: Test[]; 
     public languages: Language[];
-    public projectConfiguration: ProjectConfiguration;
+    public configuration: ProjectConfiguration;
+    public botType: BotType
 }

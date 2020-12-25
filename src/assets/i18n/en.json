@@ -60,11 +60,23 @@
     "PROJECT_POPUP": {
         "CREATE_PROJECT_BUTTON": "Create new project",
         "CLOSE_BUTTON": "Close",
-        "PROJECT_NAME_LABEL": "Project name"
+        "PROJECT_NAME_LABEL": "Project name",
+        "COGNIGY_BOT": {
+            "CONFIG_URL": "Configuration url"
+        },
+        "DIALOGFLOW_BOT": {
+            "PROJECT_ID": "Project Id"
+        }
     },
     "PROJECT_VALIDATOR": {
         "EMPTY_NAME": "The project name cannot be empty",
-        "EMPTY_BOT": "You must select a bot type to test"
+        "EMPTY_BOT": "You must select a bot type to test",
+        "COGNIGY_BOT": {
+            "CONFIG_URL_EMPTY": "Configuration url cannot be empty."
+        },
+        "DIALOGFLOW_BOT": {
+            "PROJECT_ID_EMPTY": "Project Id cannot be empty."
+        }
     },
     "LANGUAGE_SELECTOR": {
         "HEADER_TITLE": "Select the application language",

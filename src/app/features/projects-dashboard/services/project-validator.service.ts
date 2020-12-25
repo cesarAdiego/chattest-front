@@ -11,14 +11,27 @@ export class ProjectValidatorService {
 
   validateNewProject(project: Project): string[] {
     let validationErrors: string[] = [];
+    this.translate.get(['PROJECT_VALIDATOR.EMPTY_NAME',
+                        'PROJECT_VALIDATOR.EMPTY_BOT',
+                        'PROJECT_VALIDATOR.COGNIGY_BOT.CONFIG_URL_EMPTY',
+                        'PROJECT_VALIDATOR.DIALOGFLOW_BOT.PROJECT_ID_EMPTY'])
+        .subscribe(labels => {
+          if(!project.name || project.name == '') {
+            validationErrors.push(labels['PROJECT_VALIDATOR.EMPTY_NAME']);
+          }
 
-    if(!project.name || project.name == '') {
-      this.translate.get('PROJECT_VALIDATOR.EMPTY_NAME').subscribe((res: string) => validationErrors.push(res));
-    }
-    else if(!project.botTypeId || project.botTypeId == 0){
-      this.translate.get('PROJECT_VALIDATOR.EMPTY_BOT').subscribe((res: string) => validationErrors.push(res));
-    }
-    
+          if(!project.botTypeId || project.botTypeId == 0){
+            validationErrors.push(labels['PROJECT_VALIDATOR.EMPTY_BOT']);
+          }
+          else {
+            if(project.botType.isCognigy() && !project.configuration.cognigyConfiguration.configUrl) {
+              validationErrors.push(labels['PROJECT_VALIDATOR.COGNIGY_BOT.CONFIG_URL_EMPTY']);
+            }
+            else if(project.botType.isDialogFlow() && !project.configuration.dialogFlowConfiguration.projectId) {
+              validationErrors.push(labels['PROJECT_VALIDATOR.DIALOGFLOW_BOT.PROJECT_ID_EMPTY']);
+            }
+          }
+        });
     return validationErrors;
   }
 }
