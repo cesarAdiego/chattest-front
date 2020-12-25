@@ -21,4 +21,8 @@ export class TestsService {
   deleteTest(test: Test) {
     return this.http.delete<string[]>(`${environment.apiUrl}/tests/${test.id}`);
   }
+
+  cloneTest(testId: number, clonedTestName: string) {
+    return this.http.get<string[]>(`${environment.apiUrl}/tests/${testId}/clone/${clonedTestName}`);
+  }
 }

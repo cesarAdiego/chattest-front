@@ -8,6 +8,8 @@ import { Language } from 'src/app/entities/language';
 import { UserConfiguration } from 'src/app/entities/userConfiguration';
 import { LanguageCard } from '../../../language-selector/models/languageCard';
 
+import { forkJoin } from 'rxjs';
+
 @Component({
   selector: 'app-options-popup',
   templateUrl: './options-popup.component.html',
@@ -39,23 +41,23 @@ export class OptionsPopupComponent implements OnInit {
     if(selectedLanguage) {
       let config = new UserConfiguration();
       config.languageId = selectedLanguage.id;
-      this.userConfiguration.Put(config).subscribe(errorMessages => {
-        if(errorMessages.length > 0) {
-          errorMessages.forEach(message => this.messageService.add({severity: 'error', summary: 'Error', detail: message}));
-        }
-        else {
-          this.translateService.use(selectedLanguage.translationCode);
-          this.cookieService.set('lang', selectedLanguage.isoCode);
-          this.translateService.get(['LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_SUMMARY', 
-                                     'LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_DETAIL'])
-                               .subscribe((res: string[]) => {
-            this.messageService.add({severity: 'success', 
-                                     summary: res['LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_SUMMARY'],
-                                     detail: res['LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_DETAIL']
-                                    });
-          });
-        }
-      })
+
+      forkJoin([this.userConfiguration.Put(config), 
+                this.translateService.get(['LANGUAGUE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_SUMMARY',
+                                          'LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_DETAIL'])])
+        .subscribe(([res, labels]) => {
+          if(res.length > 0) {
+            res.forEach(errorMessage => this.messageService.add({severity: 'error', summary: 'Error', detail: errorMessage}));
+          }
+          else {
+            this.translateService.use(selectedLanguage.translationCode);
+            this.cookieService.set('lang', selectedLanguage.isoCode);
+            this.messageService.add({severity: 'success',
+                                     summary: labels['LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_SUMMARY'],
+                                    detail: res['LANGUAGE_SELECTOR.MODIFIED_LANGUAGE_SUCCESFUL_DETAIL']});
+            window.location.reload();
+          }
+        });
     }
   }
 }

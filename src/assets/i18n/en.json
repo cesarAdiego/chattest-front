@@ -71,5 +71,29 @@
         "POPUP_TITLE": "Global Options",
         "MODIFIED_LANGUAGE_SUCCESFUL_SUMMARY": "Language modified succesfully.",
         "MODIFIED_LANGUAGE_SUCCESFUL_DETAIL": "The application language has been modified succesfully."
+    },
+    "TEST_ITEM": {
+        "DELETE_LABEL": "Delete",
+        "CLONE_LABEL": "Clone"
+    },
+    "DELETE_TEST_POPUP": {
+        "HEADER": "Delete test",
+        "MESSAGE": "Are you sure you want to delete the test {{value}}?",
+        "SUCCESS_SUMMARY": "Removed test",
+        "SUCCESS_MESSAGE": "The test has removed successfully"
+    },
+    "CLONE_TEST_POPUP": {
+        "HEADER": "Clone test",
+        "MESSAGE": "You have to introduce a new name for the test",
+        "NEW_TEST_NAME_LABEL": "New name",
+        "EMPTY_NAME_MESSAGE": "You have to introduce a name",
+        "CLONE_LABEL": "Clone",
+        "CLOSE_LABEL": "Close",
+        "SUCCESS_SUMMARY": "Cloned test",
+        "SUCCESS_MESSAGE": "The test has cloned successfully"
+    },
+    "TESTS_DASHBOARD": {
+        "PROJECTS_DASHBOARD_LABEL": "Back to 'My Projects'",
+        "EXECUTE_LABEL": "Execute"
     }
 }

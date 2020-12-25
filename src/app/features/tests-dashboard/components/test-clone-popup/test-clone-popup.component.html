@@ -1,0 +1,15 @@
+<h6>{{'CLONE_TEST_POPUP.MESSAGE' | translate}}</h6>
+<span class="p-float-label">
+    <input id="test-name" type="text" pInputText [(ngModel)]="newName"/>
+    <label for="test-name">{{'CLONE_TEST_POPUP.NEW_TEST_NAME_LABEL' | translate}}</label>
+</span>
+<div class="p-grid p-nogutter p-justify-between">
+    <p-button label="{{'CLONE_TEST_POPUP.CLONE_LABEL' | translate}}"
+              icon="pi pi-check"
+              (click)="cloneTest()">
+    </p-button>
+    <p-button label="{{'CLONE_TEST_POPUP.CLOSE_LABEL' | translate}}"
+              icon="pi pi-times"
+              (click)="closePopup()">
+    </p-button>
+</div>

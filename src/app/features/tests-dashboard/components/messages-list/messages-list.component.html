@@ -1,0 +1,6 @@
+<div *ngFor="let userMessage of testContent.userMessages">
+    <p>Mensaje del usuario: {{userMessage.content}}</p>
+    <p *ngFor="let botAnswer of userMessage.botAnswers">
+        Respuesta del chatbot: {{botAnswer.content}}
+    </p>
+</div>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { TestsService } from 'src/app/common/services/tests.service';
@@ -18,7 +19,8 @@ export class TestListComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
     private testsService: TestsService,
-    private testListModifiedEvent: TestListModifiedEventService) { }
+    private testListModifiedEvent: TestListModifiedEventService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -53,5 +55,9 @@ export class TestListComponent implements OnInit {
           });
       }
     });
+  }
+
+  goBackToProjectsDashboard() {
+    this.router.navigate(['/projects']);
   }
 }

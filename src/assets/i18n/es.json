@@ -69,5 +69,29 @@
         "POPUP_TITLE": "Opciones globales",
         "MODIFIED_LANGUAGE_SUCCESFUL_SUMMARY": "Lenguaje modificado correctamente.",
         "MODIFIED_LANGUAGE_SUCCESFUL_DETAIL": "El lenguaje de la aplicación se ha modificado correctamente."
+    },
+    "TEST_ITEM": {
+        "DELETE_LABEL": "Eliminar",
+        "CLONE_LABEL": "Clonar"
+    },
+    "DELETE_TEST_POPUP": {
+        "HEADER": "Eliminar test",
+        "MESSAGE": "¿Estas seguro de eliminar el test {{value}}?",
+        "SUCCESS_SUMMARY": "Test eliminado",
+        "SUCCESS_MESSAGE": "El test se ha eliminado correctamente"
+    },
+    "CLONE_TEST_POPUP": {
+        "HEADER": "Clonar test",
+        "MESSAGE": "Debes de introducir un nuevo nombre para el test",
+        "NEW_TEST_NAME_LABEL": "Nuevo nombre",
+        "EMPTY_NAME_MESSAGE": "Debes de introducir un nombre",
+        "CLONE_LABEL": "Clonar",
+        "CLOSE_LABEL": "Cerrar",
+        "SUCCESS_SUMMARY": "Test clonado",
+        "SUCCESS_MESSAGE": "El test se ha clonado correctamente"
+    },
+    "TESTS_DASHBOARD": {
+        "PROJECTS_DASHBOARD_LABEL": "Volver a 'Mis Proyectos'",
+        "EXECUTE_LABEL": "Ejecutar"
     }
 }

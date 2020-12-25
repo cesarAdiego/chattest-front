@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { TestsService } from 'src/app/common/services/tests.service';
@@ -21,7 +21,8 @@ export class TestsDashboardComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private selectTestEvent: SelectTestEventService,
               private testListModifiedEvent: TestListModifiedEventService,
-              private testsService: TestsService) { }
+              private testsService: TestsService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => this.projectId = parseInt(params.get('id')));
@@ -34,7 +35,4 @@ export class TestsDashboardComponent implements OnInit {
     this.testsService.getAllTestsFromProject(this.projectId).subscribe(tests => this.tests = tests);
   }
 
-  setSelectedTest(event: Test) {
-    this.selectedTest = event;
-  }
 }
