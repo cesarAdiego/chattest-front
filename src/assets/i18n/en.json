@@ -24,13 +24,18 @@
         "PROJECT_NAME_LABEL": "Project name",
         "SELECT_TESTS_TITLE": "Please, select the tests to import",
         "SELECT_TESTS_ERROR": "You need to select at least one test to import.",
+        "NO_TESTS_FOUND_ERROR": "You cannot import an empty project. Please, try with a project which contains at least 1 test.",
         "SELECT_ALL_BUTTON": "Select all",
         "UNSELECT_ALL_BUTTON": "Unselect all",
         "NEXT_BUTTON": "Next",
         "PREVIOUS_BUTTON": "Previous",
         "IMPORT_BUTTON": "Import",
-        "PROJECT_NAME_EMPTY": "You have to introduce a name for the project you are importing.",
-        "SUCCESS_IMPORT": "The project importation has finished succesfully"
+        "SUCCESS_IMPORT": "The project importation has finished succesfully",
+        "ERRORS": {
+            "PROJECT_NAME_EMPTY": "You have to introduce a name for the project you are importing.",
+            "COGNIGY_CONFIGURATION_URL_EMPTY": "You have to introduce a valid Cognigy configuration url.",
+            "DIALOGFLOW_PROJECT_ID_EMPTY": "You have to introduce a valid DialogFlow project Id."
+        }
     },
     "PROJECTS_DASHBOARD": {
         "TITLE": "My Projects",

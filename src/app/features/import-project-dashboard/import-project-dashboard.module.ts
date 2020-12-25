@@ -18,6 +18,7 @@ import { ImportUploadFileComponent } from './components/import-upload/import-upl
 import { SelectTestsComponent } from './components/select-tests/select-tests.component';
 import { SelectTestCardComponent } from './components/select-test-card/select-test-card.component';
 import { LastDetailsComponent } from './components/last-details/last-details.component';
+import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/bot-type-selector.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { LastDetailsComponent } from './components/last-details/last-details.com
     InputTextModule,
     StepsModule,
     ToastModule,
-    TranslateModule
+    TranslateModule,
+    BotTypeSelectorModule
   ],
   exports: [ImportProjectDashboardComponent, ImportUploadFileComponent, SelectTestsComponent]
 })

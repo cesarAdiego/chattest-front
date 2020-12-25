@@ -3,6 +3,21 @@
         <input id="projectName-input" type="text" pInputText [(ngModel)]="newProjectName"/>
         <label for="projectName-input">{{'IMPORT_PROJECT.PROJECT_NAME_LABEL' | translate}}</label>
     </span>
+    <bot-type-card *ngFor="let botType of botTypes" [botType]="botType" (click)="selectBotType(botType)" class="botType">
+    </bot-type-card>
+    <div *ngIf="selectedBotType && selectedBotType.isCognigy()" class="p-grid p-nogutter">
+        <span class="p-float-label">
+            <input id="config-url" type="text" pInputText [(ngModel)]="cognigyConfiguration.configUrl"/>
+            <label for="config-url">{{'PROJECT_POPUP.COGNIGY_BOT.CONFIG_URL' | translate}}</label>
+    </span>
+    </div>
+    <div *ngIf="selectedBotType && selectedBotType.isDialogFlow()" class="p-grid p-nogutter">
+        <span class="p-float-label">
+            <input id="project-id" type="text" pInputText [(ngModel)]="dialogFlowConfiguration.projectId"/>
+            <label for="project-id">{{'PROJECT_POPUP.DIALOGFLOW_BOT.PROJECT_ID' | translate}}</label>
+        </span>
+    </div>
+
     <div class="p-grid p-nogutter p-justify-between">
         <p-button label="{{'IMPORT_PROJECT.PREVIOUS_BUTTON' | translate}}"
                   icon="pi pi-arrow-left"

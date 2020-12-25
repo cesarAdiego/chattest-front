@@ -19,6 +19,6 @@ import { BotTypeCardComponent } from './components/bot-type-card/bot-type-card.c
     RippleModule,
     CardModule
   ],
-  exports: [BotTypeSelectorComponent]
+  exports: [BotTypeSelectorComponent, BotTypeCardComponent]
 })
 export class BotTypeSelectorModule { }

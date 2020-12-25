@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BotTypesService } from 'src/app/common/services/bot-types.service';
 import { BotType } from 'src/app/entities/botType';
 import { BotTypeCard } from '../../models/botTypeCard';

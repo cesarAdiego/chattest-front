@@ -7,6 +7,7 @@ import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { ImportStoreService } from '../../services/import-store.service';
 import { ProjectImport } from '../../entities/projectImport';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'import-choose',
@@ -17,6 +18,7 @@ export class ImportUploadFileComponent implements OnInit {
   apiUrl = `${environment.apiUrl}/projects/import/getTests`;
   constructor(private message: MessageService,
               private importStore: ImportStoreService,
+              private translate: TranslateService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -32,9 +34,16 @@ export class ImportUploadFileComponent implements OnInit {
         });
       }
       else {
+        if(operationResult.result.testsWithContents.length > 0) {
         this.importStore.save(operationResult.result);
         this.router.navigate(['projects/import/select']);
       }
+      else {
+        this.translate.get('IMPORT_PROJECT.NO_TESTS_FOUND_ERROR').subscribe(errorMessage => {
+          this.message.add({severity: 'error', summary: 'Error', detail: errorMessage});
+        });
+      }
+    }
     }
     catch(ex) {
 
