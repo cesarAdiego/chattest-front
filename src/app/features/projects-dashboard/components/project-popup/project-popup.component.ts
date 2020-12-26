@@ -43,6 +43,7 @@ export class ProjectPopupComponent implements OnInit {
 
   createNewProject() {
     this.setConfiguration();
+    this.setLanguages();
     let validationMessages = this.validatorService.validateNewProject(this.project);
 
     if(validationMessages.length != 0) {
@@ -60,8 +61,7 @@ export class ProjectPopupComponent implements OnInit {
           this.messageService.add({severity: 'success',
                                    'summary': messages['PROJECTS_DASHBOARD.NEW_PROJECT_CREATED_SUMMARY'],
                                    'detail': messages['PROJECTS_DASHBOARD.NEW_PROJECT_CREATED_DETAIL']});
-          this.ref.close(errorMessages);
-  
+          this.ref.close(errorMessages);  
         });
       }
       });
@@ -83,6 +83,11 @@ export class ProjectPopupComponent implements OnInit {
       else if(this.project.botType.isDialogFlow()) {
         this.project.configuration.dialogFlowConfiguration = this.dialogFlowConfiguration;
       }
+    }
   }
+
+  setLanguages() {
+    let selectedLanguages = this.languages.filter(language => language.selected);
+    this.project.languages = selectedLanguages;
   }
 }

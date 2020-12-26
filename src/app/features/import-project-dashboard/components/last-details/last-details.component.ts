@@ -12,6 +12,9 @@ import { BotTypesService } from 'src/app/common/services/bot-types.service';
 import { CognigyConfiguration } from 'src/app/entities/cognigyConfiguration';
 import { DialogFlowConfiguration } from 'src/app/entities/dialogFlowConfiguration';
 import { BotType } from 'src/app/entities/botType';
+import { LanguagesService } from 'src/app/common/services/languages.service';
+import { LanguageCard } from 'src/app/common/modules/language-selector/models/languageCard';
+import { Language } from 'src/app/entities/language';
 
 @Component({
   selector: 'app-last-details',
@@ -21,6 +24,7 @@ import { BotType } from 'src/app/entities/botType';
 export class LastDetailsComponent implements OnInit {
   private selectedTestsToImport: SelectTestImport[];
   botTypes: BotTypeCard[];
+  languages: LanguageCard[];
   cognigyConfiguration: CognigyConfiguration = new CognigyConfiguration();
   dialogFlowConfiguration: DialogFlowConfiguration = new DialogFlowConfiguration();
   newProjectName: string;
@@ -31,6 +35,7 @@ export class LastDetailsComponent implements OnInit {
               private botTypesService: BotTypesService,
               private projectsService: ProjectsService,
               private translate: TranslateService,
+              private languageService: LanguagesService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -39,19 +44,27 @@ export class LastDetailsComponent implements OnInit {
 
     if(selectedTests) {
       this.selectedTestsToImport = selectedTests;
-      this.botTypesService.getAll().subscribe(res =>{ 
-        this.botTypes = res.map(type => new BotTypeCard(type));
-        let selectedBotType = this.botTypes.find(botType => botType.id == projectToImport.project.botTypeId);
-        this.selectedBotType = selectedBotType;
-        selectedBotType.selected = true;
 
-        if(selectedBotType.isCognigy()) {
-          this.cognigyConfiguration.configUrl = projectToImport.configuration.cognigyConfiguration.configUrl;
-        }
-        else if(selectedBotType.isDialogFlow()) {
-          this.dialogFlowConfiguration.projectId = projectToImport.configuration.dialogFlowConfiguration.projectId;
-        }
-      });
+      forkJoin([this.botTypesService.getAll(), this.languageService.getAll()])
+        .subscribe(([botTypesRes, languagesRes]) => {
+          this.botTypes = botTypesRes.map(type => new BotTypeCard(type));
+          let selectedBotType = this.botTypes.find(botType => botType.id == projectToImport.project.botTypeId);
+          this.selectedBotType = selectedBotType;
+          selectedBotType.selected = true;
+  
+          if(selectedBotType.isCognigy()) {
+            this.cognigyConfiguration.configUrl = projectToImport.configuration.cognigyConfiguration.configUrl;
+          }
+          else if(selectedBotType.isDialogFlow()) {
+            this.dialogFlowConfiguration.projectId = projectToImport.configuration.dialogFlowConfiguration.projectId;
+          }
+
+          this.languages = languagesRes.map(language => new LanguageCard(language))
+          this.languages.filter(lc => projectToImport.project.languages
+                        .map(l => l.id)
+                        .includes(lc.id))
+                        .map(lc => lc.selected = true);
+        });
     }
     else {
       this.router.navigate(['/projects/import/uploadFile']);
@@ -75,6 +88,7 @@ export class LastDetailsComponent implements OnInit {
 
       projectToImport.project.name = this.newProjectName;
       projectToImport.testsWithContents = this.selectedTestsToImport.map(testToImport => testToImport.toTestImport());
+      projectToImport.project.languages = this.languages.filter(l => l.selected).map(l => l as Language);
 
       forkJoin([this.projectsService.import(projectToImport), this.translate.get('IMPORT_PROJECT.SUCCESS_IMPORT')])
       .subscribe(([importResponse, successLabel]) => {
@@ -118,6 +132,11 @@ export class LastDetailsComponent implements OnInit {
     if(this.selectedBotType.isDialogFlow() && !this.dialogFlowConfiguration.projectId) {
       this.translate.get("IMPORT_PROJECT.ERRORS.DIALOGFLOW_PROJECT_ID_EMPTY")
           .subscribe(res => validationErrors.push(res));
+    }
+
+    if(!this.languages.some(l => l.selected)) {
+      this.translate.get("IMPORT_PROJECT.ERRORS.NO_LANGUAGES_FOUND")
+        .subscribe(res => validationErrors.push(res));
     }
 
     return validationErrors;

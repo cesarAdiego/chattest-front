@@ -9,7 +9,6 @@ import { LanguageCard } from '../../models/languageCard';
 })
 export class LanguageSelectorComponent implements OnInit {
   @Input() languages: LanguageCard[];
-  @Output('selectedLanguage') selectedLanguageEmmiter = new EventEmitter<Language>();
   
   constructor() { }
 
@@ -17,10 +16,6 @@ export class LanguageSelectorComponent implements OnInit {
   }
 
   selectLanguage(languageCard: LanguageCard) {
-    this.languages.map(language => language.selected = false);
-    languageCard.selected = true;
-    let language = languageCard as Language;
-
-    this.selectedLanguageEmmiter.emit(language);
+    languageCard.selected = !languageCard.selected;
   }
 }

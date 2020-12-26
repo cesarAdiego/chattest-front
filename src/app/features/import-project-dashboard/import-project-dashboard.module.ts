@@ -19,6 +19,7 @@ import { SelectTestsComponent } from './components/select-tests/select-tests.com
 import { SelectTestCardComponent } from './components/select-test-card/select-test-card.component';
 import { LastDetailsComponent } from './components/last-details/last-details.component';
 import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/bot-type-selector.module';
+import { LanguageSelectorModule } from 'src/app/common/modules/language-selector/language-selector.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { BotTypeSelectorModule } from 'src/app/common/modules/bot-type-selector/
     StepsModule,
     ToastModule,
     TranslateModule,
-    BotTypeSelectorModule
+    BotTypeSelectorModule,
+    LanguageSelectorModule
   ],
   exports: [ImportProjectDashboardComponent, ImportUploadFileComponent, SelectTestsComponent]
 })

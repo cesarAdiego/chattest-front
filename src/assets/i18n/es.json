@@ -34,7 +34,9 @@
         "ERRORS": {
             "PROJECT_NAME_EMPTY": "Debes de introducir un nombre para el proyecto que se está importando.",
             "COGNIGY_CONFIGURATION_URL_EMPTY": "Tienes que introducir una url de configuración de Cognigy valida.",
-            "DIALOGFLOW_PROJECT_ID_EMPTY": "Tienes que introducir un id de proyecto de DialogFlow valido."
+            "DIALOGFLOW_PROJECT_ID_EMPTY": "Tienes que introducir un id de proyecto de DialogFlow valido.",
+            "NO_LANGUAGES_FOUND": "Debes seleccionar al menos un lenguaje"
+
     },
     "PROJECTS_DASHBOARD": {
         "TITLE": "Mis Proyectos",

@@ -3,6 +3,7 @@
         <input id="projectName-input" type="text" pInputText [(ngModel)]="newProjectName"/>
         <label for="projectName-input">{{'IMPORT_PROJECT.PROJECT_NAME_LABEL' | translate}}</label>
     </span>
+    <language-selector [languages]="languages"></language-selector>
     <bot-type-card *ngFor="let botType of botTypes" [botType]="botType" (click)="selectBotType(botType)" class="botType">
     </bot-type-card>
     <div *ngIf="selectedBotType && selectedBotType.isCognigy()" class="p-grid p-nogutter">
