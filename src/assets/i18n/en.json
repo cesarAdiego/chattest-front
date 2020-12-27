@@ -112,6 +112,9 @@
     },
     "TESTS_DASHBOARD": {
         "PROJECTS_DASHBOARD_LABEL": "Back to 'My Projects'",
-        "EXECUTE_LABEL": "Execute"
+        "EXECUTE_LABEL": "Execute",
+        "SAVE_LABEL": "Save",
+        "SUCCESSFUL_SAVE_SUMMARY": "Test saved correctly",
+        "SUCCESSFUL_SAVE_DETAIL": "The test has been saved successfully"
     }
 }

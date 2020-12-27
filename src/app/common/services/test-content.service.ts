@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { OperationResult } from 'src/app/entities/operationResult';
 import { TestContent } from 'src/app/entities/testContent';
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +16,7 @@ export class TestContentService {
   }
 
   put(testId: number, testContent: TestContent) {
-    return this.http.put<string[]>(`${environment.apiUrl}/tests/${testId}/content`, testContent);
+    return this.http.put<OperationResult<TestContent>>(`${environment.apiUrl}/tests/${testId}/content`, testContent);
   }
 
   execute(testId: number) {

@@ -110,6 +110,9 @@
     },
     "TESTS_DASHBOARD": {
         "PROJECTS_DASHBOARD_LABEL": "Volver a 'Mis Proyectos'",
-        "EXECUTE_LABEL": "Ejecutar"
+        "EXECUTE_LABEL": "Ejecutar",
+        "SAVE_LABEL": "Guardar",
+        "SUCCESSFUL_SAVE_SUMMARY": "Test guardado correctamente",
+        "SUCCESSFUL_SAVE_DETAIL": "El test se ha guardado correctamente"
     }
 }
