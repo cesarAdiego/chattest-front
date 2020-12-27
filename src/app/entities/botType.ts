@@ -1,4 +1,4 @@
-import { BotTypeCard } from '../common/modules/bot-type-selector/models/botTypeCard';
+import { BotTypeDropdownItem } from '../common/modules/bot-type-dropdown/entities/BotTypeDropdownItem';
 
 export class BotType {
     public id: number;

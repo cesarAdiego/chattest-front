@@ -25,6 +25,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProjectSearcherComponent } from './components/project-searcher/project-searcher.component';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
+import { BotTypeDropdownModule } from 'src/app/common/modules/bot-type-dropdown/bot-type-dropdown.module';
+import { LanguagesDropdownModule } from 'src/app/common/modules/languages-dropdown/languages-dropdown.module';
 
 @NgModule({
   declarations: [ProjectsDashboardComponent, ProjectPopupComponent, ProjectSearcherComponent, ProjectItemComponent, ProjectsListComponent],
@@ -43,7 +45,9 @@ import { ProjectsListComponent } from './components/projects-list/projects-list.
     RippleModule,
     FileSaverModule,
     BotTypeSelectorModule,
+    BotTypeDropdownModule,
     LanguageSelectorModule,
+    LanguagesDropdownModule,
     TranslateModule
     ],
   exports: [ProjectsDashboardComponent],
