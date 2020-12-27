@@ -2,9 +2,16 @@
     <p-header>
         {{project.name}}
     </p-header>
+    <div class="p-grid p-nogutter">
+        <img src="{{project.botType.logoUrl}}"/>
+    </div>
+    <div class="p-grid p-nogutter">
+        <img src="{{language.image}}" style="margin-left:3px;" *ngFor="let language of project.languages"/>
+    </div>
     <button pButton label="{{'PROJECTS_DASHBOARD.ENTER_PROJECT_BUTTON' | translate}}" 
         class="p-button-success" 
         (click)="goToTestsDashboard()"></button>
     <p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
     <button type="button" pButton icon="pi pi-list" (click)="menu.toggle($event)"></button>
+    
 </p-card>
