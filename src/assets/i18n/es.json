@@ -112,7 +112,21 @@
         "PROJECTS_DASHBOARD_LABEL": "Volver a 'Mis Proyectos'",
         "EXECUTE_LABEL": "Ejecutar",
         "SAVE_LABEL": "Guardar",
+        "ADD_USER_MESSAGE_LABEL": "Clic aquí para enviar un mensaje al bot.",
+        "DELETE_USER_MESSAGE_LABEL": "¿Estas seguro de que quieres eliminar el mensaje y sus respuestas?",
+        "SUCCESSFUL_DELETE_USER_MESSAGE_SUMMARY": "Mensaje eliminado",
+        "SUCCESSFUL_DELETE_USER_MESSAGE_DETAIL": "Mensaje y respuestas eliminadas corretamente",
+        "ADD_USER_MESSAGE_PLACEHOLDER": "Mensaje",
+        "ADD_BOT_MESSAGE_LABEL": "Clic aquí para indicar la respuesta esperada del bot.",
+        "DELETE_BOT_MESSAGE_LABEL": "¿Estas seguro de que deseas eliminar esta respuesta del bot?",
+        "SUCCESSFUL_DELETE_BOT_MESSAGE_SUMMARY": "Respuesta eliminada",
+        "SUCCESSFUL_DELETE_BOT_MESSAGE_DETAIL": "Respuesta eliminada correctamente",
+        "ADD_BOT_MESSAGE_PLACEHOLDER": "Respuesta del bot",
         "SUCCESSFUL_SAVE_SUMMARY": "Test guardado correctamente",
-        "SUCCESSFUL_SAVE_DETAIL": "El test se ha guardado correctamente"
+        "SUCCESSFUL_SAVE_DETAIL": "El test se ha guardado correctamente",
+        "ERRORS": {
+            "EMPTY_USER_MESSAGE": "No puedes enviar un mensaje vacío.",
+            "EMPTY_BOT_MESSAGE": "No puedes esperar recibir un mensaje vacío."
+        }
     }
 }

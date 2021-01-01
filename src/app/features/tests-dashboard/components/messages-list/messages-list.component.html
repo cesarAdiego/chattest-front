@@ -1,6 +1,50 @@
+<ng-container *ngIf="testContent">
 <div *ngFor="let userMessage of testContent.userMessages">
-    <p>Mensaje del usuario: {{userMessage.content}}</p>
-    <p *ngFor="let botAnswer of userMessage.botAnswers">
-        Respuesta del chatbot: {{botAnswer.content}}
-    </p>
+    <p>User says:</p>
+    <div class="message">
+        <p *ngIf="!clickedModifyUserMessage">
+            {{userMessage.content}} 
+            <i *ngIf="!clickedModifyUserMessage" class="pi pi-pencil plus-icon" (click)="showModifyUserMessage()"></i>
+            <i class="pi pi-minus" (click)="showConfirmationPopupDeleteUserMessage(userMessage, $event)"></i>
+        </p>
+        <div *ngIf="clickedModifyUserMessage">
+            <span class="p-input-icon-right plus-icon">
+                <i class="pi pi-pencil" (click)="editUserMessage(userMessage)"></i>
+                <input type="text" pInputText [(ngModel)]="userMessage.content" placeholder="{{'TESTS_DASHBOARD.ADD_USER_MESSAGE_PLACEHOLDER' | translate}}"/>            
+            </span>
+        </div>
+    </div>
+    <div>
+        <p>Bot answers:</p>
+        <div *ngFor="let botAnswer of userMessage.botAnswers">
+            <p *ngIf="!clickedModifyBotMessage">
+                {{botAnswer.content}}
+                <i *ngIf="!clickedModifyBotMessage" class="pi pi-pencil plus-icon" (click)="showModifyBotMessage()"></i>
+                <i class="pi pi-minus" (click)="showConfirmationPopupDeleteBotMessage(userMessage, botAnswer, $event)"></i>
+            </p>
+            <div *ngIf="clickedModifyBotMessage">
+                <span class="p-input-icon-right plus-icon">
+                    <i class="pi pi-pencil" (click)="editBotMessage(botAnswer)"></i>
+                    <input type="text" pInputText [(ngModel)]="botAnswer.content" placeholder="{{'TESTS_DASHBOARD.ADD_BOT_MESSAGE_PLACEHOLDER' | translate}}"/>
+                </span>
+            </div>
+        </div>
+        <p *ngIf="!clickedAddBotMessage" (click)="showAddBotMessage(userMessage)" class="plus-icon">{{'TESTS_DASHBOARD.ADD_BOT_MESSAGE_LABEL' | translate}}</p>
+        <div *ngIf="clickedAddBotMessage && selectedUserMessage.content == userMessage.content">
+            <span class="p-input-icon-right plus-icon">
+                <i class="pi pi-plus" (click)="addBotMessage(userMessage)"></i>
+                <input type="text" pInputText [(ngModel)]="botMessage" placeholder="{{'TESTS_DASHBOARD.ADD_BOT_MESSAGE_PLACEHOLDER' | translate}}"/>
+            </span>
+        </div>        
+    </div>
+</div>
+</ng-container>
+<div>
+    <p *ngIf="!clickedAddUserMessage" (click)="showAddUserMessage()" class="plus-icon">{{'TESTS_DASHBOARD.ADD_USER_MESSAGE_LABEL' | translate}}</p>
+    <div *ngIf="clickedAddUserMessage">
+        <span class="p-input-icon-right plus-icon">
+            <i class="pi pi-plus" (click)="addUserMessage()"></i>
+            <input type="text" pInputText [(ngModel)]="userMessage" placeholder="{{'TESTS_DASHBOARD.ADD_USER_MESSAGE_PLACEHOLDER' | translate}}"/>            
+        </span>
+    </div>
 </div>

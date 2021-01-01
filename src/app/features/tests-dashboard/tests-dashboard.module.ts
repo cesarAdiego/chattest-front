@@ -11,6 +11,7 @@ import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { MenuModule } from 'primeng/menu';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmPopupModule } from'primeng/confirmpopup';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -35,6 +36,7 @@ import { MessagesListComponent } from './components/messages-list/messages-list.
     ToastModule,
     MenuModule,
     ConfirmDialogModule,
+    ConfirmPopupModule,
     DynamicDialogModule,
     TranslateModule
   ],

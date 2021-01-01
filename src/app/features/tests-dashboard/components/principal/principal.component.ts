@@ -21,13 +21,13 @@ export class TestsDashboardComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private selectTestEvent: SelectTestEventService,
               private testListModifiedEvent: TestListModifiedEventService,
-              private testsService: TestsService,
-              private router: Router) { }
+              private testsService: TestsService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => this.projectId = parseInt(params.get('id')));
     this.selectTestEvent.eventListener().subscribe(res => this.selectedTest = res);
     this.testListModifiedEvent.eventListener().subscribe(_ => this.refreshTests());
+    this.selectedTest = undefined;
     this.refreshTests();
   }
 

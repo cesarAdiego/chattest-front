@@ -1,8 +1,10 @@
     <h1>{{test.name}}</h1>
     <button pButton label="{{'TESTS_DASHBOARD.EXECUTE_LABEL' | translate}}" 
         class="p-button-success"
+        icon="pi pi-caret-right"
         (click)="executeTest()"></button>
     <button pButton label="{{'TESTS_DASHBOARD.SAVE_LABEL' | translate}}"
         class="p-button-success"
         icon="pi pi-save"
         (click)="saveTest()"></button>
+    <messages-list [testContent]="testContent"></messages-list>
