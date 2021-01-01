@@ -48,8 +48,6 @@ export class UserMessageComponent implements OnInit {
       botMessage.content = this.botMessage;
 
       this.message.botAnswers.push(botMessage);
-      console.log('Message:', this.message);
-      console.log("Bot answers", this.message.botAnswers);
       this.clickedAddBotMessage = !this.clickedAddBotMessage;
       this.botMessage = undefined;
     }
