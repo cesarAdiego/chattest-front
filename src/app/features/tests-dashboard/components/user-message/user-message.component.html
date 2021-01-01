@@ -1,0 +1,27 @@
+<p>User says:</p>
+    <div class="message">
+        <p *ngIf="!clickedModifyUserMessage">
+            {{message.content}} 
+            <i *ngIf="!clickedModifyUserMessage" class="pi pi-pencil plus-icon" (click)="showModifyUserMessage()"></i>
+            <i class="pi pi-minus plus-icon" (click)="showConfirmationPopupDeleteUserMessage($event)"></i>
+        </p>
+        <div *ngIf="clickedModifyUserMessage">
+            <span class="p-input-icon-right plus-icon">
+                <i class="pi pi-pencil" (click)="editUserMessage()"></i>
+                <input type="text" pInputText [(ngModel)]="message.content" placeholder="{{'TESTS_DASHBOARD.ADD_USER_MESSAGE_PLACEHOLDER' | translate}}"/>            
+            </span>
+        </div>
+    </div>
+    <div>
+        <p>Bot answers:</p>
+        <div *ngFor="let botAnswer of message.botAnswers">
+            <bot-message [message]="botAnswer" (deleteBotMessageEvent)="deleteBotMessage($event)"></bot-message>
+        </div>
+        <p *ngIf="!clickedAddBotMessage" (click)="showAddBotMessage()" class="plus-icon">{{'TESTS_DASHBOARD.ADD_BOT_MESSAGE_LABEL' | translate}}</p>
+        <div *ngIf="clickedAddBotMessage">
+            <span class="p-input-icon-right plus-icon">
+                <i class="pi pi-plus" (click)="addBotMessage()"></i>
+                <input type="text" pInputText [(ngModel)]="botMessage" placeholder="{{'TESTS_DASHBOARD.ADD_BOT_MESSAGE_PLACEHOLDER' | translate}}"/>
+            </span>
+        </div>        
+    </div>

@@ -1,8 +1,13 @@
-<test-list [tests]="tests" 
-           style="width: 30%; display:inline-block;"></test-list>
-<test-board *ngIf="selectedTest" [test]="selectedTest" style="width: 70%; display: inline-block;"></test-board>
-
+<div class="testList">
+    <!-- <div> -->
+    <test-list [tests]="tests"></test-list>
+    <p-scrollTop></p-scrollTop>
+</div>
+<div class="testBoard">           
+    <!-- <div> -->
+    <test-board *ngIf="selectedTest" [test]="selectedTest" ></test-board>
+</div>
 <!--Primeng features-->
 <p-toast></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<p-confirmPopup></p-confirmPopup>
+<!-- <p-confirmPopup></p-confirmPopup> -->

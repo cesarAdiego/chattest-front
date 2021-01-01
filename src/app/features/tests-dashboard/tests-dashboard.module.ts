@@ -10,8 +10,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { MenuModule } from 'primeng/menu';
+import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ConfirmPopupModule } from'primeng/confirmpopup';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -23,9 +25,11 @@ import { TestBoardComponent } from './components/test-board/test-board.component
 import { TestItemComponent } from './components/test-item/test-item.component';
 import { TestClonePopupComponent } from './components/test-clone-popup/test-clone-popup.component';
 import { MessagesListComponent } from './components/messages-list/messages-list.component';
+import { UserMessageComponent } from './components/user-message/user-message.component';
+import { BotMessageComponent } from './components/bot-message/bot-message.component';
 
 @NgModule({
-  declarations: [TestsDashboardComponent, TestPopupComponent, TestListComponent, TestBoardComponent, TestItemComponent, TestClonePopupComponent, MessagesListComponent],
+  declarations: [TestsDashboardComponent, TestPopupComponent, TestListComponent, TestBoardComponent, TestItemComponent, TestClonePopupComponent, MessagesListComponent, UserMessageComponent, BotMessageComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -35,9 +39,11 @@ import { MessagesListComponent } from './components/messages-list/messages-list.
     RippleModule,
     ToastModule,
     MenuModule,
+    TabMenuModule,
     ConfirmDialogModule,
     ConfirmPopupModule,
     DynamicDialogModule,
+    ScrollTopModule,
     TranslateModule
   ],
   exports: [TestsDashboardComponent],

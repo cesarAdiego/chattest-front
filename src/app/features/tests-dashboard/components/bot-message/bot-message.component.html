@@ -1,0 +1,11 @@
+<p *ngIf="!clickedModifyBotMessage">
+    {{message.content}}
+    <i *ngIf="!clickedModifyBotMessage" class="pi pi-pencil plus-icon" (click)="showModifyBotMessage()"></i>
+    <i class="pi pi-minus plus-icon" (click)="showConfirmationPopupDeleteBotMessage($event)"></i>
+</p>
+<div *ngIf="clickedModifyBotMessage">
+    <span class="p-input-icon-right plus-icon">
+        <i class="pi pi-pencil" (click)="editBotMessage()"></i>
+        <input type="text" pInputText [(ngModel)]="message.content" placeholder="{{'TESTS_DASHBOARD.ADD_BOT_MESSAGE_PLACEHOLDER' | translate}}"/>
+    </span>
+</div>
