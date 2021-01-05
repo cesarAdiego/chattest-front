@@ -1,5 +1,6 @@
 <ng-container *ngIf="testContent">
 <div *ngFor="let userMessage of testContent.userMessages">
+    <img src="/assets/img/user_logo.jpg" style="width: 30px; height: 30px; margin-left: 950px;"/>
     <user-message [message]="userMessage" (deleteMessageEvent)="deleteUserMessage($event)"></user-message>
 </div>
 </ng-container>

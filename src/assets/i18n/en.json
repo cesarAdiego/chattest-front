@@ -131,6 +131,14 @@
         "ERRORS": {
             "EMPTY_USER_MESSAGE": "You cannot send an empty message.",
             "EMPTY_BOT_MESSAGE": "You cannot expect to receive an empty message"
+        },
+        "EXECUTION": {
+            "SUCCESFUL_EXECUTION_SUMMARY": "Test passed successfully",
+            "SUCCESFUL_EXECUTION_DETAIL": "The test has passed successfully",
+            "ERROR_EXECUTION_SUMMARY": "The test hasn't passed",
+            "ERROR_EXECUTION_DETAIL": "There were errors during test executio, please check the test to know where it fails",
+            "ERROR_TIMEOUT_SUMMARY": "Exceeded time passed",
+            "ERROR_TIMEOUT_DETAIL": "The test has been executed more time than allowed."
         }
     }
 }

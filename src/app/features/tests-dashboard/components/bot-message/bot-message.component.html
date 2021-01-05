@@ -1,11 +1,14 @@
-<p *ngIf="!clickedModifyBotMessage">
-    {{message.content}}
-    <i *ngIf="!clickedModifyBotMessage" class="pi pi-pencil plus-icon" (click)="showModifyBotMessage()"></i>
-    <i class="pi pi-minus plus-icon" (click)="showConfirmationPopupDeleteBotMessage($event)"></i>
-</p>
-<div *ngIf="clickedModifyBotMessage">
-    <span class="p-input-icon-right plus-icon">
-        <i class="pi pi-pencil" (click)="editBotMessage()"></i>
-        <input type="text" pInputText [(ngModel)]="message.content" placeholder="{{'TESTS_DASHBOARD.ADD_BOT_MESSAGE_PLACEHOLDER' | translate}}"/>
-    </span>
+<div style="padding: 2px; border: 1px solid black; border-radius: 25px; margin: 5px;" 
+     [ngClass]="{'success': message.hasExecuted && !message.hasErrors, 'error': message.hasExecuted && message.hasErrors}">
+    <p *ngIf="!clickedModifyBotMessage">
+        {{message.content}}
+        <i *ngIf="!clickedModifyBotMessage" class="pi pi-pencil plus-icon" (click)="showModifyBotMessage()"></i>
+        <i class="pi pi-minus plus-icon" (click)="showConfirmationPopupDeleteBotMessage($event)"></i>
+    </p>
+    <div *ngIf="clickedModifyBotMessage">
+        <span class="p-input-icon-right plus-icon">
+            <i class="pi pi-pencil" (click)="editBotMessage()"></i>
+            <input type="text" pInputText [(ngModel)]="message.content" placeholder="{{'TESTS_DASHBOARD.ADD_BOT_MESSAGE_PLACEHOLDER' | translate}}"/>
+        </span>
+    </div>
 </div>

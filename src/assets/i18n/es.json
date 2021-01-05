@@ -129,6 +129,14 @@
         "ERRORS": {
             "EMPTY_USER_MESSAGE": "No puedes enviar un mensaje vacío.",
             "EMPTY_BOT_MESSAGE": "No puedes esperar recibir un mensaje vacío."
+        },
+        "EXECUTION": {
+            "SUCCESFUL_EXECUTION_SUMMARY": "Test ejecutado correctamente",
+            "SUCCESFUL_EXECUTION_DETAIL": "El test se ha ejecutado correctamente",
+            "ERROR_EXECUTION_SUMMARY": "El test no ha pasado la prueba",
+            "ERROR_EXECUTION_DETAIL": "Se han detectado errores durante la ejecución del test, por favor revíselo para saber donde ha fallado",
+            "ERROR_TIMEOUT_SUMMARY": "Se ha agotado el tiempo de ejecución",
+            "ERROR_TIMEOUT_DETAIL": "El test ha estado más tiempo de lo permitido en ejecución"
         }
     }
 }

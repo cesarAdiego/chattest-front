@@ -18,6 +18,7 @@ import { BotAnswerExecutionResult } from '../../entities/botAnswerExecutionResul
 export class TestBoardComponent implements OnInit {
   @Input() test: Test;
   testContent: TestContent;
+  showProgressBar: boolean = false;
   constructor(private selectTestEvent: SelectTestEventService,
               private testContentService: TestContentService,
               private message: MessageService,
@@ -30,29 +31,57 @@ export class TestBoardComponent implements OnInit {
   }
 
   executeTest() {
+    this.clearExecuteResults();
+    this.showProgressBar = true;
     this.testContentService.put(this.test.id, this.testContent).subscribe(saveResult => {
       if(saveResult.hasErrors) {
         saveResult.operationErrors.forEach(errorMessage => this.message.add({severity: 'error', summary: 'Error', detail: errorMessage}));
       }
       else {
         this.testContent = saveResult.result;
-        this.testContentService.execute(this.test).subscribe(res => {
-          console.log(res);
-          let botAnswersArray = this.testContent.userMessages.map(message => message.botAnswers);
-          let botAnswers = [].concat(...botAnswersArray);
-          res.botAnswerExecutions.forEach(execution => {
-            let botAnswer: Message = botAnswers.find((answer: Message) => answer.id == execution.expectedBotAnswer.id);
-            botAnswer.hasExecuted = true;
-            botAnswer.hasErrors = !execution.areEqual;
-          });
+        forkJoin([this.testContentService.execute(this.test),
+                  this.translate.get(['TESTS_DASHBOARD.EXECUTION.SUCCESFUL_EXECUTION_SUMMARY',
+                                      'TESTS_DASHBOARD.EXECUTION.SUCCESFUL_EXECUTION_DETAIL',
+                                      'TESTS_DASHBOARD.EXECUTION.ERROR_EXECUTION_SUMMARY',
+                                      'TESTS_DASHBOARD.EXECUTION.ERROR_EXECUTION_DETAIL',
+                                      'TESTS_DASHBOARD.EXECUTION.ERROR_TIMEOUT_SUMMARY',
+                                      'TESTS_DASHBOARD.EXECUTION.ERROR_TIMEOUT_DETAIL'])])
+          .subscribe(([res, labels]) => {
+            if(res.hasErrors) {
+              this.message.add({severity: 'error',
+                                summary: labels['TESTS_DASHBOARD.EXECUTION.ERROR_EXECUTION_SUMMARY'],
+                                detail: labels['TESTS_DASHBOARD.EXECUTION.ERROR_EXECUTION_DETAIL']
+                              });
+            }
+            else if(res.hasTimeoutError) {
+              this.message.add({severity: 'error',
+                                summary: labels['TESTS_DASHBOARD.EXECUTION.ERROR_TIMEOUT_SUMMARY'],
+                                detail: labels['TESTS_DASHBOARD.EXECUTION.ERROR_TIMEOUT_DETAIL']
+                              });
+            }
+            else {
+              this.message.add({severity: 'success',
+                                summary: labels['TESTS_DASHBOARD.EXECUTION.SUCCESFUL_EXECUTION_SUMMARY'],
+                                detail: labels['TESTS_DASHBOARD.EXECUTION.SUCCESFUL_EXECUTION_DETAIL']
+                              });
+            }
 
-          console.log(this.testContent);
-        });
-    }
+            let botAnswersArray = this.testContent.userMessages.map(message => message.botAnswers);
+            let botAnswers = [].concat(...botAnswersArray);
+            res.botAnswerExecutions.forEach(execution => {
+              let botAnswer: Message = botAnswers.find((answer: Message) => answer.id == execution.expectedBotAnswer.id);
+              botAnswer.hasExecuted = true;
+              botAnswer.hasErrors = !execution.areEqual;
+            });
+
+            this.showProgressBar = false;
+          });
+      }
     });
   }
 
   saveTest() {
+    this.clearExecuteResults();
     forkJoin([this.testContentService.put(this.test.id, this.testContent),
                                           this.translate.get(['TESTS_DASHBOARD.SUCCESSFUL_SAVE_SUMMARY',
                                                               'TESTS_DASHBOARD.SUCCESSFUL_SAVE_DETAIL'])])
@@ -67,6 +96,17 @@ export class TestBoardComponent implements OnInit {
           
           this.testContent = saveResult.result;
         }
+      });
+  }
+
+  clearExecuteResults() {
+    let botAnswersArray = this.testContent.userMessages.map(message => message.botAnswers);
+    let botAnswers = [].concat(...botAnswersArray);
+
+    botAnswers.forEach((answer: Message) => 
+      { 
+        answer.hasErrors = false;
+        answer.hasExecuted = false;
       });
   }
 }

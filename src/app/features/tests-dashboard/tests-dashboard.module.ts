@@ -14,6 +14,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ScrollTopModule } from 'primeng/scrolltop';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -44,6 +45,7 @@ import { BotMessageComponent } from './components/bot-message/bot-message.compon
     ConfirmPopupModule,
     DynamicDialogModule,
     ScrollTopModule,
+    ProgressBarModule,
     TranslateModule
   ],
   exports: [TestsDashboardComponent],

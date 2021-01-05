@@ -7,4 +7,5 @@
         class="p-button-success"
         icon="pi pi-save"
         (click)="saveTest()"></button>
+    <p-progressBar mode="indeterminate" *ngIf="showProgressBar"></p-progressBar>
     <messages-list [testContent]="testContent"></messages-list>
