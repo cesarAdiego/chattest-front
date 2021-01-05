@@ -7,6 +7,8 @@ import { SelectTestEventService } from '../../services/select-test-event.service
 
 import { forkJoin } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { Message } from 'src/app/entities/message';
+import { BotAnswerExecutionResult } from '../../entities/botAnswerExecutionResult';
 
 @Component({
   selector: 'test-board',
@@ -33,8 +35,18 @@ export class TestBoardComponent implements OnInit {
         saveResult.operationErrors.forEach(errorMessage => this.message.add({severity: 'error', summary: 'Error', detail: errorMessage}));
       }
       else {
-        this.testContentService.execute(this.test.id).subscribe(res => {
+        this.testContent = saveResult.result;
+        this.testContentService.execute(this.test).subscribe(res => {
+          console.log(res);
+          let botAnswersArray = this.testContent.userMessages.map(message => message.botAnswers);
+          let botAnswers = [].concat(...botAnswersArray);
+          res.botAnswerExecutions.forEach(execution => {
+            let botAnswer: Message = botAnswers.find((answer: Message) => answer.id == execution.expectedBotAnswer.id);
+            botAnswer.hasExecuted = true;
+            botAnswer.hasErrors = !execution.areEqual;
+          });
 
+          console.log(this.testContent);
         });
     }
     });

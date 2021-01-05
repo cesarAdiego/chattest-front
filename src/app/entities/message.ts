@@ -1,4 +1,6 @@
 export class Message {
-    id: string;
-    content: string;
+    public id: string;
+    public content: string;
+    public hasExecuted: boolean = false;
+    public hasErrors: boolean = false;
 }
