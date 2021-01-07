@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { TestsService } from 'src/app/common/services/tests.service';
@@ -20,41 +21,54 @@ export class TestListComponent implements OnInit {
     private messageService: MessageService,
     private testsService: TestsService,
     private testListModifiedEvent: TestListModifiedEventService,
-    private router: Router) { }
+    private router: Router,
+    private translate: TranslateService) { }
 
   ngOnInit(): void {
   }
 
   createTestPopup() {
-    const ref = this.dialogService.open(TestPopupComponent, {
-      'header': 'Nuevo Test',
-      'width': '50%'
-    });
-
-    ref.onClose.subscribe((errorMessages: string[]) => {
-      if(errorMessages && errorMessages.length == 0) {
-        this.testListModifiedEvent.emit();
-      }
+    this.translate.get('CREATE_TEST_POPUP.HEADER').subscribe(res => {
+      const ref = this.dialogService.open(TestPopupComponent, {
+        'header': res,
+        'width': '50%'
+      });
+  
+      ref.onClose.subscribe((errorMessages: string[]) => {
+        if(errorMessages && errorMessages.length == 0) {
+          this.testListModifiedEvent.emit();
+        }
+      });
     });
   }
 
   removeTest(test: Test) {
-    this.confirmationService.confirm({
-      message: `¿Estas seguro de que quieres eliminar el proyecto ${test.name}?`,
-      accept: () => {
-          this.testsService.deleteTest(test).subscribe(errorMessages => {
-            if(errorMessages.length > 0) {
-              errorMessages.forEach(errorMessage => {
-                this.messageService.add({severity: 'error', summary: 'Error', detail: errorMessage});
-              });
-            }
-            else {
-              this.messageService.add({severity: 'success', 'summary': 'Test eliminado', detail: 'Test eliminado correctamente'});
-              this.testListModifiedEvent.emit();
+    this.translate.get(['DELETE_TEST_POPUP.HEADER',
+                        'DELETE_TEST_POPUP_MESSAGE',
+                        'DELETE_TEST_POPUP.SUCCESS_SUMMARY',
+                        'DELETE_TEST_POPUP.SUCCESS_DETAIL'],
+                        { value: test.name})
+        .subscribe(labels => {
+          this.confirmationService.confirm({
+            header: labels['DELETE_TEST_POPUP.HEADER'],
+            message: labels['DELETE_TEST_POPUP.MESSAGE'],
+            accept: () => {
+                this.testsService.deleteTest(test).subscribe(errorMessages => {
+                  if(errorMessages.length > 0) {
+                    errorMessages.forEach(errorMessage => {
+                      this.messageService.add({severity: 'error', summary: 'Error', detail: errorMessage});
+                    });
+                  }
+                  else {
+                    this.messageService.add({severity: 'success', 
+                                            summary: labels['DELETE_TEST_POPUP.SUCCESS_SUMMARY'],
+                                            detail: labels['DELETE_TEST_POPUP.SUCCESS_DETAIL']});
+                    this.testListModifiedEvent.emit();
+                  }
+                });
             }
           });
-      }
-    });
+        });
   }
 
   goBackToProjectsDashboard() {

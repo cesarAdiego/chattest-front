@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { TestsService } from 'src/app/common/services/tests.service';
 import { Test } from 'src/app/entities/test';
+
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-test-popup',
@@ -16,7 +19,8 @@ export class TestPopupComponent implements OnInit {
   constructor(private testService: TestsService,
               private ref: DynamicDialogRef,
               private route: ActivatedRoute,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private translate: TranslateService) { }
 
   ngOnInit(): void {
     this.test = new Test();
@@ -25,19 +29,25 @@ export class TestPopupComponent implements OnInit {
 
   createNewTest() {
     this.test.projectId = this.projectId;
-    if(this.test.name == '') {
-      this.messageService.add({severity: 'error', 'summary': 'Error', 'detail': 'El nombre del proyecto no puede estar vacío'});
+    if(!this.test.name || this.test.name == '') {
+      this.translate.get('CREATE_TEST_POPUP.ERROR.EMPTY_NAME').subscribe(label => {
+        this.messageService.add({severity: 'error', 'summary': 'Error', 'detail': label});
+      });
     }
     else {
-      this.testService.createTest(this.test).subscribe(errorMessages => {
-        console.log(errorMessages);
+      forkJoin([this.testService.createTest(this.test),
+                this.translate.get(['CREATE_TEST_POPUP.SUCCESSFUL_SUMMARY',
+                                    'CREATE_TEST_POPUP.SUCCESSFUL_DETAIL'])])
+      .subscribe(([errorMessages, labels]) => {
         if(errorMessages.length > 0) {
           errorMessages.forEach(message => {
             this.messageService.add({severity: 'error', 'summary': 'Error', 'detail': message});
           });
         }
         else {
-          this.messageService.add({severity: 'success', 'summary': 'Test creado', 'detail': 'Test creado correctamente'});
+          this.messageService.add({severity: 'success',
+                                   summary: labels['CREATE_TEST_POPUP.SUCCESSFUL_SUMMARY'],
+                                   detail: labels['CREATE_TEST_POPUP.SUCCESSFUL_DETAIL']});
           this.ref.close(errorMessages);
         }
       });

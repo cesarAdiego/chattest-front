@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { ProjectsService } from 'src/app/common/services/projects.service';
@@ -21,7 +22,8 @@ export class ProjectsDashboardComponent implements OnInit {
   constructor(private projectsService: ProjectsService,
               private dialogService: DialogService,
               private projectListModifiedEvent: ProjectListModifiedEventService,
-              private router: Router) { }
+              private router: Router,
+              private translate: TranslateService) { }
 
   ngOnInit(): void {
     this.refreshProjects();
@@ -29,16 +31,18 @@ export class ProjectsDashboardComponent implements OnInit {
   }
 
   openNewProjectPopup(event) {
-    const ref = this.dialogService.open(ProjectPopupComponent, {
-      header: 'Nuevo Proyecto',
-      'width': '50%',
-      'height': '75%'
-    });
-
-    ref.onClose.subscribe((errorMessages: string[]) => {
-      if(errorMessages && errorMessages.length == 0) {
-        this.refreshProjects();
-      }
+    this.translate.get('PROJECT_POPUP.CREATE_PROJECT_TITLE').subscribe(res => {
+      const ref = this.dialogService.open(ProjectPopupComponent, {
+        header: res,
+        'width': '50%',
+        'height': '75%'
+      });
+  
+      ref.onClose.subscribe((errorMessages: string[]) => {
+        if(errorMessages && errorMessages.length == 0) {
+          this.refreshProjects();
+        }
+      });
     });
   }
 

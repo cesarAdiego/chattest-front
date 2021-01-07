@@ -62,6 +62,7 @@
         "SUCCESS_MESSAGE": "El proyecto se ha eliminado correctamente"
     },
     "PROJECT_POPUP": {
+        "CREATE_PROJECT_TITLE": "Nuevo proyecto",
         "CREATE_PROJECT_BUTTON": "Crear nuevo proyecto",
         "CLOSE_BUTTON": "Cerrar",
         "PROJECT_NAME_LABEL": "Nombre del proyecto",
@@ -93,20 +94,31 @@
         "CLONE_LABEL": "Clonar"
     },
     "DELETE_TEST_POPUP": {
-        "HEADER": "Eliminar test",
-        "MESSAGE": "¿Estas seguro de eliminar el test {{value}}?",
-        "SUCCESS_SUMMARY": "Test eliminado",
-        "SUCCESS_MESSAGE": "El test se ha eliminado correctamente"
+        "HEADER": "Eliminar prueba",
+        "MESSAGE": "¿Estas seguro de eliminar la prueba {{value}}?",
+        "SUCCESS_SUMMARY": "Prueba eliminada",
+        "SUCCESS_MESSAGE": "La prueba se ha eliminado correctamente"
     },
     "CLONE_TEST_POPUP": {
-        "HEADER": "Clonar test",
-        "MESSAGE": "Debes de introducir un nuevo nombre para el test",
+        "HEADER": "Clonar prueba",
+        "MESSAGE": "Debes de introducir un nuevo nombre para la prueba",
         "NEW_TEST_NAME_LABEL": "Nuevo nombre",
         "EMPTY_NAME_MESSAGE": "Debes de introducir un nombre",
         "CLONE_LABEL": "Clonar",
         "CLOSE_LABEL": "Cerrar",
-        "SUCCESS_SUMMARY": "Test clonado",
-        "SUCCESS_MESSAGE": "El test se ha clonado correctamente"
+        "SUCCESS_SUMMARY": "Prueba clonada",
+        "SUCCESS_MESSAGE": "La prueba se ha clonado correctamente"
+    },
+    "CREATE_TEST_POPUP": {
+        "HEADER": "Nueva prueba",
+        "TEST_NAME_LABEL": "Nombre de la prueba",
+        "ACCEPT_LABEL": "Crear nueva prueba",
+        "CLOSE_LABEL": "Cerrar",
+        "SUCCESSFUL_SUMMARY": "Prueba creada correctamente",
+        "SUCCESSFUL_DETAIL": "La prueba se ha creado correctamente",
+        "ERROR": {
+            "EMPTY_NAME": "El nombre de la prueba no puede estar vacío"
+        }
     },
     "TESTS_DASHBOARD": {
         "MY_TESTS_LABEL": "Mis `pruebas`",
@@ -126,19 +138,19 @@
         "SUCCESSFUL_DELETE_BOT_MESSAGE_SUMMARY": "Respuesta eliminada",
         "SUCCESSFUL_DELETE_BOT_MESSAGE_DETAIL": "Respuesta eliminada correctamente",
         "ADD_BOT_MESSAGE_PLACEHOLDER": "Respuesta del bot",
-        "SUCCESSFUL_SAVE_SUMMARY": "Test guardado correctamente",
-        "SUCCESSFUL_SAVE_DETAIL": "El test se ha guardado correctamente",
+        "SUCCESSFUL_SAVE_SUMMARY": "Prueba guardada correctamente",
+        "SUCCESSFUL_SAVE_DETAIL": "La prueba se ha guardado correctamente",
         "ERRORS": {
             "EMPTY_USER_MESSAGE": "No puedes enviar un mensaje vacío.",
             "EMPTY_BOT_MESSAGE": "No puedes esperar recibir un mensaje vacío."
         },
         "EXECUTION": {
-            "SUCCESFUL_EXECUTION_SUMMARY": "Test ejecutado correctamente",
-            "SUCCESFUL_EXECUTION_DETAIL": "El test se ha ejecutado correctamente",
-            "ERROR_EXECUTION_SUMMARY": "El test no ha pasado la prueba",
-            "ERROR_EXECUTION_DETAIL": "Se han detectado errores durante la ejecución del test, por favor revíselo para saber donde ha fallado",
+            "SUCCESFUL_EXECUTION_SUMMARY": "Prueba ejecutada correctamente",
+            "SUCCESFUL_EXECUTION_DETAIL": "La prueba se ha ejecutado correctamente",
+            "ERROR_EXECUTION_SUMMARY": "La prueba no ha pasado la prueba",
+            "ERROR_EXECUTION_DETAIL": "Se han detectado errores durante la ejecución de la prueba, por favor revíselo para saber donde ha fallado",
             "ERROR_TIMEOUT_SUMMARY": "Se ha agotado el tiempo de ejecución",
-            "ERROR_TIMEOUT_DETAIL": "El test ha estado más tiempo de lo permitido en ejecución"
+            "ERROR_TIMEOUT_DETAIL": "La prueba ha estado más tiempo de lo permitido en ejecución"
         }
     }
 }

@@ -64,6 +64,7 @@
         "SUCCESS_MESSAGE": "The project has removed successfully"
     },
     "PROJECT_POPUP": {
+        "CREATE_PROJECT_TITLE": "New project",
         "CREATE_PROJECT_BUTTON": "Create new project",
         "CLOSE_BUTTON": "Close",
         "PROJECT_NAME_LABEL": "Project name",
@@ -109,6 +110,17 @@
         "CLOSE_LABEL": "Close",
         "SUCCESS_SUMMARY": "Cloned test",
         "SUCCESS_MESSAGE": "The test has cloned successfully"
+    },
+    "CREATE_TEST_POPUP": {
+        "HEADER": "New test",
+        "TEST_NAME_LABEL": "Test name",
+        "ACCEPT_LABEL": "Create new test",
+        "CLOSE_LABEL": "Close",
+        "SUCCESSFUL_SUMMARY": "Created test succesfully",
+        "SUCCESSFUL_DETAIL": "The test has been created succesfully",
+        "ERROR": {
+            "EMPTY_NAME": "The test name can't be empty"
+        }
     },
     "TESTS_DASHBOARD": {
         "MY_TESTS_LABEL": "My Tests",
