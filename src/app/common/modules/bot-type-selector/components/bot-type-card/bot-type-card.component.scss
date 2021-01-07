@@ -1,4 +1,9 @@
 .selected {
-    background-color: blue !important;
-    color:white !important;
+    background-color:#F0F0F0 !important;
+    border: solid 1px black !important;
+}
+
+p-card div:hover {
+    cursor: pointer;
+    background-color: #F0F0F0 !important;
 }

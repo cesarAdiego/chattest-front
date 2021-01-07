@@ -26,8 +26,8 @@ export class TestClonePopupComponent implements OnInit {
   }
 
   cloneTest() {
-    console.log('enters');
     if(this.newName) {
+      console.log(this.newName);
     forkJoin([this.testService.cloneTest(this.testId, this.newName),
               this.translate.get(['CLONE_TEST_POPUP.SUCCESS_SUMMARY',
                                   'CLONE_TEST_POPUP.SUCCESS_MESSAGE'])])
@@ -39,7 +39,7 @@ export class TestClonePopupComponent implements OnInit {
           this.message.add({severity: 'success', 
                             summary: labels['CLONE_TEST_POPUP.SUCCESS_SUMMARY'],
                             detail: labels['CLONE_TEST_POPUP.SUCCESS_MESSAGE']});
-          this.ref.close();                            
+          this.ref.close(true);                            
         }
       });
     }
@@ -51,6 +51,6 @@ export class TestClonePopupComponent implements OnInit {
   }
 
   closePopup() {
-    this.ref.close();
+    this.ref.close(false);
   }
 }

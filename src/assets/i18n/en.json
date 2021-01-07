@@ -111,6 +111,8 @@
         "SUCCESS_MESSAGE": "The test has cloned successfully"
     },
     "TESTS_DASHBOARD": {
+        "MY_TESTS_LABEL": "My Tests",
+        "NEW_TEST_LABEL": "New Test",
         "PROJECTS_DASHBOARD_LABEL": "Back to 'My Projects'",
         "EXECUTE_LABEL": "Execute",
         "SAVE_LABEL": "Save",

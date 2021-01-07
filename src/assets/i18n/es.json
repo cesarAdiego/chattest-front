@@ -109,6 +109,8 @@
         "SUCCESS_MESSAGE": "El test se ha clonado correctamente"
     },
     "TESTS_DASHBOARD": {
+        "MY_TESTS_LABEL": "Mis `pruebas`",
+        "NEW_TEST_LABEL": "Añadir prueba",
         "PROJECTS_DASHBOARD_LABEL": "Volver a 'Mis Proyectos'",
         "EXECUTE_LABEL": "Ejecutar",
         "SAVE_LABEL": "Guardar",

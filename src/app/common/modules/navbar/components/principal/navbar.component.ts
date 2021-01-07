@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { OptionsPopupComponent } from '../options-popup/options-popup.component';
@@ -11,7 +12,9 @@ import { OptionsPopupComponent } from '../options-popup/options-popup.component'
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public dialogService: DialogService, private translate: TranslateService) { }
+  constructor(public dialogService: DialogService,
+              private translate: TranslateService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,9 +24,13 @@ export class NavbarComponent implements OnInit {
       const ref = this.dialogService.open(OptionsPopupComponent, {
         header: res,
         width: '70%',
-        height: '70%'
+        height: '40%'
       });
     });
+  }
+
+  goToProjectsPage() {
+    this.router.navigate(['/projects']);
   }
 
 }

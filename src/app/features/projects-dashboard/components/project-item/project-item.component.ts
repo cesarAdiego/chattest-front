@@ -33,10 +33,10 @@ export class ProjectItemComponent implements OnInit {
               this.deleteProject();
               }
             },
-            {label: res['PROJECT_ITEM.CLONE_LABEL'], icon: 'pi pi-fw pi-clone', command: (click) => {
-              this.cloneProject();
-              }
-            },
+            // {label: res['PROJECT_ITEM.CLONE_LABEL'], icon: 'pi pi-fw pi-clone', command: (click) => {
+            //   this.cloneProject();
+            //   }
+            // },
             {label: res['PROJECT_ITEM.EXPORT_LABEL'], icon: 'pi pi-fw pi-download', command: (click) => {
               this.exportProject();
             }}

@@ -71,6 +71,12 @@ export class TestItemComponent implements OnInit {
           id: this.test.id
         }
       });
+
+      ref.onClose.subscribe((res: boolean) => {
+        if(res) {
+          this.testListModifiedEvent.emit();
+        }
+      })
     });
   }
 

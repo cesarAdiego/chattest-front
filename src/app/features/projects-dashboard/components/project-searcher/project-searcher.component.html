@@ -4,6 +4,6 @@
     </p-header>
     <input type="text" pInputText (keyup)="filterByName()" [(ngModel)]="projectName" 
            placeholder="{{'PROJECT_FILTER.NAME_PLACEHOLDER'| translate}}">
-    <bot-type-dropdown></bot-type-dropdown>
-    <languages-dropdown></languages-dropdown>
+    <bot-type-dropdown (onSelectBotType)="filterByBotType($event)"></bot-type-dropdown>
+    <languages-dropdown (onSelectLanguage)="filterByLanguage($event)"></languages-dropdown>
 </p-card>

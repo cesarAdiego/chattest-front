@@ -1,3 +1,10 @@
 <nav>
-    <i class="pi pi-cog optionsButton" (click)="openConfigurationPopup()"></i>
+    <div style="display: flex; justify-content: space-between;">
+        <div (click)="goToProjectsPage()" class="plus-icon">
+            <img src="/assets/img/logo.png" style="width: 100px; height: 100px;"/>
+        </div>
+        <div (click)="openConfigurationPopup()">
+            <i class="pi pi-cog optionsButton"></i>
+        </div>
+    </div>
 </nav>

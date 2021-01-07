@@ -2,6 +2,6 @@
           icon="pi pi-arrow-left"
           (click)="goBackToProjectsDashboard()">
 </p-button>
-<button pButton label="Nuevo Test" icon="pi pi-plus" style="display: block !important;" (click)="createTestPopup()"></button>
-<h1>Mis Tests</h1>
+<button pButton label="{{'TESTS_DASHBOARD.NEW_TEST_LABEL' | translate}}" icon="pi pi-plus" style="display: block !important;" (click)="createTestPopup()"></button>
+<h1>{{'TESTS_DASHBOARD.MY_TESTS_LABEL' | translate}}</h1>
 <test-item *ngFor="let test of tests" [test]="test"></test-item>
